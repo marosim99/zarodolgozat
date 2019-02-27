@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!doctype html>
 <html lang="hu">
   <head>
@@ -13,7 +16,7 @@
   </head>
   <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="../php/index.php">Fotós segéd</a>
+  <a class="navbar-brand" href="#">Fotós segéd</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -29,38 +32,21 @@
         <a class="nav-link" href="#"> Fórum </a>
       </li>
 	  <li class="nav-item" id="reg">
-		<a class="nav-link" href="#"> Bejelentkezés/Regisztráció </a>
+		<a class="nav-link" href="../html/login.html"> Bejelentkezés/Regisztráció </a>
 	  </li>
     </ul>
   </div>
 </nav>
-
-	<div id="login-text">
-	<p>Bejelentkezés</p>
-	</div>
-
-
-		<div class="form-group" id="col-75">
-      <form class="flex-container" action="../php/belep.php" method="post">
-			<label id="label">Felhasználónév</label>
-			<input type="username" class="form-control" id="exampleFormControlInput1" name="username">
-		</div>
-		<div class="form-group" id="col-75">
-			<label id="label">Jelszó</label>
-			<input type="password" class="form-control" id="exampleFormControlInput1" name="password">
-		</div>
-		<div class="form-group" id="col-75">
-		<button type="submit" class="btn btn-dark" id="submitbtn" name="belep">Belépés</button>
-    </form>
-		</div>
-
-
-	<div id="noreg">
-	<p><a class="nav-link" href="regisztracio.html">Nincs még felhasználói fiókja? Regisztráljon ide kattintva!</p>
-	</div>
-
-
-
+<div>
+  <?php
+  if(isset($_SESSION['uid'])){
+    echo "Belépve";
+  }
+  else {
+    echo "kilépve";
+  }
+   ?>
+</div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
