@@ -42,7 +42,7 @@
       }
       else {
         echo '<li class="nav-item" id="reg">
-    		<a class="nav-link" href="../html/login.html"> Bejelentkezés/Regisztráció </a>
+    		<a class="nav-link" href="login.php"> Bejelentkezés/Regisztráció </a>
     	  </li>';
       }
        ?>
