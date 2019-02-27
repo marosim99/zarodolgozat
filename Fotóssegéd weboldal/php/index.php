@@ -46,7 +46,7 @@
 
 	<div class="responsive">
   <div class="gallery">
-    <a target="_blank" href="3.jpg">
+    <a target="_blank" href="../kepek/3.jpg">
       <img src="../kepek/3.jpg" alt="Cinque Terre" width="600" height="400">
     </a>
     <div class="desc">Feltöltő: Marosi Márk</div>
@@ -56,7 +56,7 @@
 
 <div class="responsive">
   <div class="gallery">
-    <a target="_blank" href="1.jpg">
+    <a target="_blank" href="../kepek/1.jpg">
       <img src="../kepek/1.jpg" alt="auto" width="600" height="400">
     </a>
     <div class="desc">Feltöltő: Marosi Márk</div>
@@ -65,7 +65,7 @@
 
 <div class="responsive">
   <div class="gallery">
-    <a target="_blank" href="2.jpg">
+    <a target="_blank" href="../kepek/2.jpg">
       <img src="../kepek/2.jpg" alt="Northern Lights" width="600" height="400">
     </a>
     <div class="desc">Feltöltő: Marosi Márk</div>
@@ -74,7 +74,7 @@
 
 <div class="responsive">
   <div class="gallery">
-    <a target="_blank" href="4.jpg">
+    <a target="_blank" href="../kepek/4.jpg">
       <img src="../kepek/4.jpg" alt="Mountains" width="600" height="400">
     </a>
     <div class="desc">Feltöltő: Marosi Márk</div>
