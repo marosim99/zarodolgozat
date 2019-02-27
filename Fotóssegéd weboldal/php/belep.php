@@ -20,7 +20,7 @@ if(isset($_POST['belep'])){
                   //belépett
                   session_start();
                   $row = $res -> fetch_row();
-                  $_SESSION['uid'] = $row[0];
+                  $_SESSION['id'] = $row[0];
                   header('Location: ../php/header.php');
                   exit();
               } else {

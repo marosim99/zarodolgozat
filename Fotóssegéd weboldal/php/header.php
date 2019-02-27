@@ -16,7 +16,7 @@
   </head>
   <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Fotós segéd</a>
+  <a class="navbar-brand" href="index.php">Fotós segéd</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -31,15 +31,24 @@
       <li class="nav-item">
         <a class="nav-link" href="#"> Fórum </a>
       </li>
-	  <li class="nav-item" id="reg">
-		<a class="nav-link" href="../html/login.html"> Bejelentkezés/Regisztráció </a>
-	  </li>
+      <?php
+      if(isset($_SESSION['id'])){
+        echo '<li class="nav-item" id="reg">
+    		<a class="nav-link" href="logout.php"> Kilépés </a>
+    	  </li>';
+      }
+      else {
+        echo '<li class="nav-item" id="reg">
+    		<a class="nav-link" href="../html/login.html"> Bejelentkezés/Regisztráció </a>
+    	  </li>';
+      }
+       ?>
     </ul>
   </div>
 </nav>
 <div>
   <?php
-  if(isset($_SESSION['uid'])){
+  if(isset($_SESSION['id'])){
     echo "Belépve";
   }
   else {
