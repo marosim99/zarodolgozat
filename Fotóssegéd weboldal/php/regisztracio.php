@@ -10,18 +10,22 @@
 		<div class="form-group" id="col-75">
 			<label id="label">Email-cím*</label>
 			<input name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="valaki@valami.com" required>
+      <span id="emailError"></span>
 		</div>
 		<div class="form-group" id="col-75">
 			<label id="label">Felhasználónév*</label>
 			<input name="username" type="text" class="form-control" id="exampleFormControlInput1" required>
+      <span id="userError"></span>
 		</div>
 		<div class="form-group" id="col-75">
 			<label id="label">Jelszó*</label>
 			<input name="password" type="password" class="form-control" id="exampleFormControlInput1" required>
+      <span id="pwdError"></span>
 		</div>
 		<div class="form-group" id="col-75">
 			<label id="label">Jelszó Megerősítés*</label>
 			<input name="password2" type="password" class="form-control" id="exampleFormControlInput1" required>
+      <span id="pwd2Error"></span>
 		</div>
 
 

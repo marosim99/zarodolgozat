@@ -1,7 +1,6 @@
 <?php
     require "header.php";
  ?>
-
 	<div id="honapkepei">
 	<p>A hónap legszebb képei</p>
 	</div>
