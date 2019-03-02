@@ -6,20 +6,28 @@
 	<p>Bejelentkezés</p>
 	</div>
 
-
-		<div class="form-group" id="col-75">
+<div class="card text-center bg-dark mx-auto w-50">
+  <div class="card-header" id="label">
+		<div class="form-group">
+        <p>Bejelentkezés</p>
+    </div>
+  </div>
+  <div class="card-body bg-secondary" id="label">
       <form class="flex-container" action="../php/belep.php" method="post">
+    <div class="form-group">
 			<label id="label">Felhasználónév</label>
 			<input type="username" class="form-control" id="exampleFormControlInput1" name="username">
-		</div>
-		<div class="form-group" id="col-75">
+    </div>
+		<div class="form-group">
 			<label id="label">Jelszó</label>
 			<input type="password" class="form-control" id="exampleFormControlInput1" name="password">
 		</div>
-		<div class="form-group" id="col-75">
+		<div class="form-group">
 		<button type="submit" class="btn btn-dark" id="submitbtn" name="belep">Belépés</button>
     </form>
 		</div>
+  </div>
+  </div>
 
 
 	<div id="noreg">
