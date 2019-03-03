@@ -2,9 +2,6 @@
   require "header.php";
  ?>
  <br>
-	<div id="login-text">
-	<p>Regisztráció</p>
-	</div>
 
   <div class="card text-center bg-dark mx-auto w-50">
     <div class="card-header" id="label">
@@ -52,6 +49,7 @@
           </label>
         </div>
     </div>
+    </div>
   </fieldset>
 
 		<div class="form-group">
@@ -67,7 +65,7 @@
 		<button type="submit" class="btn btn-dark" id="submitbtn" name="reg">Regisztráció</button>
 		</div>
 	</form>
-</div>
+
 </div>
 
 
