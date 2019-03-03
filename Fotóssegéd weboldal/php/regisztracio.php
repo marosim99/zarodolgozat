@@ -1,37 +1,43 @@
 <?php
   require "header.php";
  ?>
+ <br>
 	<div id="login-text">
 	<p>Regisztráció</p>
 	</div>
 
-
+  <div class="card text-center bg-dark mx-auto w-50">
+    <div class="card-header" id="label">
+      <div>
+    	<p>Regisztráció</p>
+    	</div>
+    </div>
+  <div class="card-body bg-secondary" id="label">
 	<form class="flex-container" method="post" action="reg.php">
-		<div class="form-group" id="col-75">
+		<div class="form-group">
 			<label id="label">Email-cím*</label>
 			<input name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="valaki@valami.com" required>
       <span id="emailError"></span>
 		</div>
-		<div class="form-group" id="col-75">
+		<div class="form-group">
 			<label id="label">Felhasználónév*</label>
 			<input name="username" type="text" class="form-control" id="exampleFormControlInput1" required>
       <span id="userError"></span>
 		</div>
-		<div class="form-group" id="col-75">
+		<div class="form-group">
 			<label id="label">Jelszó*</label>
 			<input name="password" type="password" class="form-control" id="exampleFormControlInput1" required>
       <span id="pwdError"></span>
 		</div>
-		<div class="form-group" id="col-75">
+		<div class="form-group">
 			<label id="label">Jelszó Megerősítés*</label>
 			<input name="password2" type="password" class="form-control" id="exampleFormControlInput1" required>
       <span id="pwd2Error"></span>
 		</div>
 
-
-		<fieldset class="form-group" id="col-75">
-			<div class="row" >
-			<legend class="col-form-label col-sm-2 pt-0" id="label">Neme</legend>
+		<fieldset class="form-group">
+			<div class="row">
+			<legend class="col-form-label " id="label">Neme</legend>
 		<div class="col-sm-10">
         <div class="form-check">
           <input class="form-check-input" type="radio" name="neme" id="gridRadios1" value="férfi" checked>
@@ -48,7 +54,7 @@
     </div>
   </fieldset>
 
-		<div class="form-group" id="col-75">
+		<div class="form-group">
 			<label for="exampleFormControlTextarea1" id="label">Rövid bemutatkozás (max 500 karakter!)</label>
 			<textarea type="text" class="form-control" id="exampleFormControlTextarea1" rows="4" maxlength="500" name=bemutatkozas></textarea>
 		</div>
@@ -57,10 +63,12 @@
 			<div id="small-text">
 				<p>A csillaggal (*) jelölt mezők kitöltése kötelező</p>
 			</div>
-		<div class="form-group" id="col-75">
+		<div class="form-group">
 		<button type="submit" class="btn btn-dark" id="submitbtn" name="reg">Regisztráció</button>
 		</div>
 	</form>
+</div>
+</div>
 
 
 

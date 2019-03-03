@@ -4,7 +4,7 @@
  <br>
  <div class="card text-center bg-dark mx-auto w-50">
    <div class="card-header" id="label">
-     Featured
+     Profiladatok módosítása
    </div>
    <div class="card-body bg-secondary" id="label">
      <h5 class="card-title">Special title treatment</h5>

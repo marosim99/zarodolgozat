@@ -2,13 +2,11 @@
     require "header.php";
  ?>
 
-	<div id="login-text">
-	<p>Bejelentkezés</p>
-	</div>
 
+<br>
 <div class="card text-center bg-dark mx-auto w-50">
   <div class="card-header" id="label">
-		<div class="form-group">
+		<div class="form-group" >
         <p>Bejelentkezés</p>
     </div>
   </div>
@@ -23,7 +21,7 @@
 			<input type="password" class="form-control" id="exampleFormControlInput1" name="password">
 		</div>
 		<div class="form-group">
-		<button type="submit" class="btn btn-dark" id="submitbtn" name="belep">Belépés</button>
+		<button type="submit" class="btn btn-dark" id="loginbutton" name="belep">Belépés</button>
     </form>
 		</div>
   </div>

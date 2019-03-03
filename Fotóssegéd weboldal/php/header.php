@@ -13,14 +13,11 @@
     <script src="../JS/regValidate.js" charset="UTF-8"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<link rel="stylesheet" href="../style/styles.css">
+	  <link rel="stylesheet" href="../style/styles.css">
 
         <style>
-        .aktiv{
-            background-color: yellow;
-        }
         span{
-            color: darkred;
+        		color: darkred;
         }
         </style>
 
