@@ -1,5 +1,5 @@
 <?php
-  session_start();
+  //session_start();
 ?>
 <!doctype html>
 <html lang="hu">
@@ -16,9 +16,7 @@
 	  <link rel="stylesheet" href="../style/styles.css">
 
         <style>
-        span{
-        		color: darkred;
-        }
+        
         </style>
 
     <title>Fotós segéd</title>

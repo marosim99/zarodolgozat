@@ -1,6 +1,30 @@
-<?php
-    require "header.php";
- ?>
+<!doctype html>
+<html lang="hu">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <script src="../JS/jquery-3.3.1.min.js" charset="UTF-8"></script>
+    <script src="../JS/regValidate.js" charset="UTF-8"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+   <link rel="stylesheet" href="../style/styles.css">
+
+        <style>
+        span{
+           color: darkred;
+        }
+        </style>
+
+    <title>Fotós segéd</title>
+  </head>
+  <body>
+    <?php
+      session_start();
+       require "menu.php";
+    ?>
 	<div id="honapkepei">
 	<p>A hónap legszebb képei</p>
 	</div>

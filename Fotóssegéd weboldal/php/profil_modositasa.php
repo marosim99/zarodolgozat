@@ -1,7 +1,6 @@
 <?php
-    require "header.php";
     require_once("../config/connect.php");
-
+    session_start();
       $id = $_SESSION['id'];
 
      $sql="SELECT * FROM user WHERE id='$id';";
@@ -12,6 +11,32 @@
      $user = $row["username"];
      $bemutatkozas = $row["bemutatkozas"];
  ?>
+ <!doctype html>
+ <html lang="hu">
+   <head>
+     <!-- Required meta tags -->
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+     <!-- Bootstrap CSS -->
+     <script src="../JS/jquery-3.3.1.min.js" charset="UTF-8"></script>
+     <script src="../JS/regValidate.js" charset="UTF-8"></script>
+
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+ 	  <link rel="stylesheet" href="../style/styles.css">
+
+         <style>
+         span{
+         		color: darkred;
+         }
+         </style>
+
+     <title>Fotós segéd</title>
+   </head>
+   <body>
+     <?php
+        require "menu.php";
+     ?>
  <br>
  <form class="flex-container" method="post" action="update.php">
  <div class="card text-center bg-dark mx-auto w-50">
@@ -20,11 +45,16 @@
    </div>
 
    <div class="card-body bg-secondary" id="label">
-     <h5 class="card-title">Fofilkép feltöltése</h5>
-     <div class="custom-file" id="input">
+     <label id="label">Frofilkép feltöltése</label>
+  <div class="d-flex justify-content-center">
+     <div>
+        <img src="../kepek/ppic.png" alt="" class="rounded" id="profpic"/>
+    </div>
+     <div class="custom-file">
        <input type="file" class="custom-file-input" id="customFile">
        <label class="custom-file-label" for="customFile">Kép tallózása</label>
     </div>
+  </div>
        <div class="form-group">
          <br>
         <label id="label">Új email-cím</label>
@@ -58,3 +88,4 @@
     </div>
     </div>
   </form>
+</body>

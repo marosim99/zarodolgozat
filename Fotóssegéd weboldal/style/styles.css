@@ -1,7 +1,14 @@
 body{
-	background-color: gray;
+	background-color: grey;
 }
 
+span{
+		color: darkred;
+}
+#profpic{
+	height: 80%;
+	width: 80%;
+}
 #carouselExampleFade{
 	height: 40%;
 	width: 40%;
