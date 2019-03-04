@@ -1,14 +1,24 @@
 body{
-	background-color: grey;
+	background-color: gray;
 }
 
 span{
 		color: darkred;
 }
-#profpic{
-	height: 80%;
-	width: 80%;
+
+textarea {
+   resize: none;
 }
+
+#profpic{
+	height: 90%;
+	width: 90%;
+	margin-top: 15px;
+}
+#cardform{
+	width: 50rem;
+}
+
 #carouselExampleFade{
 	height: 40%;
 	width: 40%;

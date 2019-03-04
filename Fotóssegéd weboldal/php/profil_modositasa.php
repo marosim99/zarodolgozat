@@ -23,13 +23,7 @@
      <script src="../JS/regValidate.js" charset="UTF-8"></script>
 
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
- 	  <link rel="stylesheet" href="../style/styles.css">
-
-         <style>
-         span{
-         		color: darkred;
-         }
-         </style>
+ 	   <link rel="stylesheet" href="../style/styles.css">
 
      <title>Fotós segéd</title>
    </head>
@@ -39,22 +33,28 @@
      ?>
  <br>
  <form class="flex-container" method="post" action="update.php">
- <div class="card text-center bg-dark mx-auto w-50">
+ <div class="card text-center bg-dark mx-auto" id=cardform><br>
    <div class="card-header" id="label">
      Profiladatok módosítása
    </div>
-
    <div class="card-body bg-secondary" id="label">
-     <label id="label">Frofilkép feltöltése</label>
-  <div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-start">
      <div>
-        <img src="../kepek/ppic.png" alt="" class="rounded" id="profpic"/>
+        <img src="../kepek/ppic.png" alt="" class="rounded float-left" id="profpic"/>
     </div>
+    <div class="d-flex align-items-center flex-column" style="width: 900px;">
+      <label id="label">Frofilkép feltöltése</label>
      <div class="custom-file">
        <input type="file" class="custom-file-input" id="customFile">
        <label class="custom-file-label" for="customFile">Kép tallózása</label>
     </div>
-  </div>
+      <div class="form-group">
+        <br>
+        <label for="exampleFormControlTextarea1" id="label">Bemutatkozás módosítása (500 karakter)</label>
+        <textarea type="text" class="form-control" id="exampleFormControlTextarea1" rows="5" maxlength="500" name=bemutatkozas style="width: 450px;"><?php echo $bemutatkozas; ?></textarea>
+      </div>
+</div>
+</div>
        <div class="form-group">
          <br>
         <label id="label">Új email-cím</label>

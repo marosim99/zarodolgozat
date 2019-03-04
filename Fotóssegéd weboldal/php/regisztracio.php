@@ -24,7 +24,7 @@
     ?>
  <br>
 
-  <div class="card text-center bg-dark mx-auto w-50">
+  <div class="card text-center bg-dark mx-auto" id=cardform>
     <div class="card-header" id="label">
       <div>
     	<p>Regisztráció</p>
