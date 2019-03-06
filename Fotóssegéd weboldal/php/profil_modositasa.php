@@ -44,9 +44,13 @@
     </div>
     <div class="d-flex align-items-center flex-column" style="width: 900px;">
       <label id="label">Frofilkép feltöltése</label>
+    <div class="d-flex flex-row">
      <div class="custom-file">
-       <input type="file" class="custom-file-input" id="customFile">
+
+       <input type="file" class="custom-file-input" id="customFile" name="profkep">
        <label class="custom-file-label" for="customFile">Kép tallózása</label>
+     </div>
+    <button type="submit" class="btn btn-dark" id="submitbtn" name="update">Adatok frissítése</button>
     </div>
       <div class="form-group">
         <br>

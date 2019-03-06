@@ -10,6 +10,11 @@ textarea {
    resize: none;
 }
 
+input[name="profkep"]{
+	padding: 5px;
+	margin-right: 50px;
+}
+
 #profpic{
 	height: 90%;
 	width: 90%;
