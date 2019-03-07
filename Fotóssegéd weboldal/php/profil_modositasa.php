@@ -31,6 +31,17 @@
    <body>
      <?php
         require "menu.php";
+        $profImg = "";
+        if(file_exists("../kepek/profkep/".$id.".jpg"))
+        {
+          $profImg = '../kepek/profkep/'.$id.'.jpg';
+        } else if(file_exists("../kepek/profkep/".$id.".png"))
+        {
+          $profImg = '../kepek/profkep/'.$id.'.png';
+        }
+        else {
+          $profImg = '../kepek/profkep/placeholder.jpg';
+        }
      ?>
  <br>
  <form class="flex-container" method="post" action="update.php">
@@ -44,7 +55,7 @@
 <form class="flex-container" method="post" action="profkep_feltolt.php" enctype="multipart/form-data">
   <div class="d-flex justify-content-start">
      <div>
-        <img src="../kepek/ppic.png" alt="" class="rounded float-left" id="profpic"/>
+        <img src="<?php echo $profImg; ?>" alt="" class="rounded float-left" id="profpic"/>
     </div>
     <div class="d-flex align-items-center flex-column" style="width: 900px;">
       <label id="label">Frofilkép feltöltése</label>
@@ -55,7 +66,7 @@
        <label class="custom-file-label" for="customFile">Kép tallózása</label>
      </div>
 
-    <button type="submit" class="btn btn-dark" id="submitbtn" name="upload">Kép feltöltése</button>
+    <button type="submit" class="btn btn-dark" name="upload">Kép feltöltése</button>
     </div>
 </form>
 
