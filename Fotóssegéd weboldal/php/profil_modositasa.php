@@ -9,6 +9,7 @@
 
      $email = $row["email"];
      $user = $row["username"];
+     $pwd = $row["password"];
      $bemutatkozas = $row["bemutatkozas"];
  ?>
  <!doctype html>
@@ -33,11 +34,14 @@
      ?>
  <br>
  <form class="flex-container" method="post" action="update.php">
- <div class="card text-center bg-dark mx-auto" id=cardform><br>
+ <div class="card text-center bg-dark mx-auto" id="cardform"><br>
    <div class="card-header" id="label">
      Profiladatok módosítása
    </div>
    <div class="card-body bg-secondary" id="label">
+</form>
+
+<form class="flex-container" method="post" action="profkep_feltolt.php" enctype="multipart/form-data">
   <div class="d-flex justify-content-start">
      <div>
         <img src="../kepek/ppic.png" alt="" class="rounded float-left" id="profpic"/>
@@ -47,11 +51,15 @@
     <div class="d-flex flex-row">
      <div class="custom-file">
 
-       <input type="file" class="custom-file-input" id="customFile" name="profkep">
+       <input type="file" class="custom-file-input" id="profkep" name="profkep">
        <label class="custom-file-label" for="customFile">Kép tallózása</label>
      </div>
-    <button type="submit" class="btn btn-dark" id="submitbtn" name="update">Adatok frissítése</button>
+
+    <button type="submit" class="btn btn-dark" id="submitbtn" name="upload">Kép feltöltése</button>
     </div>
+</form>
+
+<form class="flex-container" method="post" action="update.php">
       <div class="form-group">
         <br>
         <label for="exampleFormControlTextarea1" id="label">Bemutatkozás módosítása (500 karakter)</label>
@@ -62,27 +70,23 @@
        <div class="form-group">
          <br>
         <label id="label">Új email-cím</label>
-   			<input value="<?php echo $email; ?>" name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="valaki@valami.com" required>
+   			<input value="<?php echo $email; ?>" name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="valaki@valami.com">
          <span id="emailError"></span>
    		</div>
       <div class="form-group">
   			<label id="label">Új felhasználónév</label>
-  			<input value="<?php echo $user; ?>" name="username" type="text" class="form-control" id="exampleFormControlInput1" required>
+  			<input value="<?php echo $user; ?>" name="username" type="text" class="form-control" id="exampleFormControlInput1">
         <span id="userError"></span>
   		</div>
   		<div class="form-group">
   			<label id="label">Új jelszó</label>
-  			<input name="password" type="password" class="form-control" id="exampleFormControlInput1" required>
+  			<input name="password" type="password" class="form-control" id="exampleFormControlInput1" value="<?php echo $pwd; ?>">
         <span id="pwdError"></span>
   		</div>
   		<div class="form-group">
   			<label id="label">Új jelszó megerősítése</label>
-  			<input name="password2" type="password" class="form-control" id="exampleFormControlInput1" required>
+  			<input name="password2" type="password" class="form-control" id="exampleFormControlInput1" value="<?php echo $pwd; ?>">
         <span id="pwd2Error"></span>
-  		</div>
-      <div class="form-group">
-  			<label for="exampleFormControlTextarea1" id="label">Bemutatkozás módosítása (500 karakter)</label>
-  			<textarea type="text" class="form-control" id="exampleFormControlTextarea1" rows="4" maxlength="500" name=bemutatkozas><?php echo $bemutatkozas; ?></textarea>
   		</div>
 
      <div class="form-group">
