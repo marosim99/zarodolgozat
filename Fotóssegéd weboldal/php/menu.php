@@ -13,6 +13,9 @@
         <span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item">
+      <a class="nav-link" href="objektivek.php"> Objektívek </a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link" href="#"> Feltöltések </a>
     </li>
     <li class="nav-item">
