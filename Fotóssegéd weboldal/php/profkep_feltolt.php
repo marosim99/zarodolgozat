@@ -38,13 +38,19 @@ $profkepFolder = "G:\htdocs\zarodolgozat\Fotóssegéd weboldal\kepek\profkep\\";
 //echo $imgType," ",$imgTmpName," ",$ext;
 
 if (in_array($imgType, $imgFormat) && $imgSize < 16000000){
-    //if (!file_exists("J:\htdocs\fotosseged\Fotóssegéd weboldal\kepek\\".$imgName)) {
+
+    if (file_exists($profkepFolder.$id.".jpg")) {
+        unlink($profkepFolder.$id.".jpg");
         move_uploaded_file($imgTmpName, $profkepFolder.$imgName);
         rename($profkepFolder.$imgName, $profkepFolder.$id.".".$ext);
         header("Location: profil_modositasa.php");
-    //} else {
-        //echo "Már létezik ilyen nevű fájl!";
-    //}
+    } else {
+      move_uploaded_file($imgTmpName, $profkepFolder.$imgName);
+      rename($profkepFolder.$imgName, $profkepFolder.$id.".".$ext);
+      header("Location: profil_modositasa.php");
+    }
+
+
 } else {
       echo "<div id='honapkepei'><p>Nem engedélyezett fájltípus, vagy túl nagy méretű!</p></div>";
       echo "<div id='noreg'><a href='profil_modositasa.php' class='nav-link'>Próbálja újra!</a></div>";
