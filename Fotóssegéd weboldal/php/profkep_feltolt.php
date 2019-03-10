@@ -45,6 +45,7 @@ if (in_array($imgType, $imgFormat) && $imgSize < 16000000){
         rename($profkepFolder.$imgName, $profkepFolder.$id.".".$ext);
         header("Location: profil_modositasa.php");
     } else {
+      unlink($profkepFolder.$id.".png");
       move_uploaded_file($imgTmpName, $profkepFolder.$imgName);
       rename($profkepFolder.$imgName, $profkepFolder.$id.".".$ext);
       header("Location: profil_modositasa.php");
