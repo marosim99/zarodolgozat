@@ -34,7 +34,11 @@ $imgSize = $_FILES['profkep']['size'];
 $uploadError = $_FILES['profkep']['error'];
 $imgFormat = array("image/jpeg", "image/png");
 $ext = pathinfo($imgName, PATHINFO_EXTENSION);
-$profkepFolder = "G:\htdocs\zarodolgozat\Fotóssegéd weboldal\kepek\profkep\\";
+//otthon
+//$profkepFolder = "G:\htdocs\zarodolgozat\Fotóssegéd weboldal\kepek\profkep\\";
+
+//suli
+$profkepFolder = "J:/htdocs/fotosseged/Fotóssegéd weboldal/kepek/profkep//";
 //echo $imgType," ",$imgTmpName," ",$ext;
 
 if (in_array($imgType, $imgFormat) && $imgSize < 16000000){
