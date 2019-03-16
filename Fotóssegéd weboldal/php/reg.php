@@ -28,27 +28,57 @@
     $neme = trim($_POST["neme"]);
     $bemutatkozas = trim($_POST["bemutatkozas"]);
 
-    //require "header.php";
+    //$error_user = false;
+    $check_user = "SELECT username FROM user WHERE username ='$user';";
+    $result_user = mysqli_query($conn,$check_user);
+    //$count_user = mysqli_num_rows($result_user);
 
-    if (($pwd == $pwd2) && ($user != $pwd) && (strlen($pwd) > 5)){
-        $sql = "INSERT INTO user(username, password, neme, email, bemutatkozas, regdatum) VALUES ('$user','$pwd','$neme','$email','$bemutatkozas',CURDATE());";
-        $conn -> query($sql);
-        if ($conn -> error == 0){
-            $_SESSION['reg'] = "Sikeres regisztráció!";
-            echo "<div id='honapkepei'><p>Sikeres regisztráció!</p></div>";
-            echo "<div id='noreg'><a href='login.php' class='nav-link'>Jelentkezzen be!</a></div>";
+    //$error_email = false;
+    $check_email = "SELECT email FROM user WHERE email ='$email';";
+    $result_email = mysqli_query($conn,$check_email);
+    //$count_email = mysqli_num_rows($result_email);
+
+    if(mysqli_num_rows($result_user) > 0)
+    {
+      $_SESSION['reg'] = "A felhasználónév már foglalt!";
+      echo "<div id='honapkepei'><p>A felhasználónév már foglalt!</p></div>";
+      $error_user = true;
+    }
+    else{
+      $error_user = false;
+    }
+
+    if(mysqli_num_rows($result_email) > 0){
+      $_SESSION['reg'] = "Ez az email cím már foglalt!";
+      echo "<div id='honapkepei'><p>Ez az email cím már foglalt!</p></div>";
+      $error_email = true;
+    }
+    else{
+      $error_email = false;
+    }
+
+    var_dump($error_user);
+    var_dump($error_email);
+
+        if ((!$error_user) && (!$error_email) && ($pwd == $pwd2) && ($user != $pwd) && (strlen($pwd) > 5)){
+            $sql = "INSERT INTO user(username, password, neme, email, bemutatkozas, regdatum) VALUES ('$user','$pwd','$neme','$email','$bemutatkozas',CURDATE());";
+            $conn -> query($sql);
+            if ($conn -> error == 0){
+                $_SESSION['reg'] = "Sikeres regisztráció!";
+                echo "<div id='honapkepei'><p>Sikeres regisztráció!</p></div>";
+                echo "<div id='noreg'><a href='login.php' class='nav-link'>Jelentkezzen be!</a></div>";
+            }
+            else {
+                $_SESSION['reg'] = "A regisztráció sikertelen!";
+                echo "<div id='honapkepei'><p>Sikertelen regisztráció!</p></div>";
+                echo "<div id='noreg'><a href='regisztracio.php' class='nav-link'>Regisztráljon újra!</a></div>";
+            }
         }
         else {
-            $_SESSION['reg'] = "A regisztráció sikertelen!";
-            echo "<div id='honapkepei'><p>Sikertelen regisztráció!</p></div>";
-            echo "<div id='noreg'><a href='regisztracio.php' class='nav-link'>Regisztráljon újra!</a></div>";
+          $_SESSION['reg'] = "A regisztráció sikertelen!";
+          echo "<div id='honapkepei'><p>Sikertelen regisztráció!</p></div>";
+          echo "<div id='noreg'><a href='regisztracio.php' class='nav-link'>Regisztráljon újra!</a></div>";
         }
-    }
-    else {
-      $_SESSION['reg'] = "A regisztráció sikertelen!";
-      echo "<div id='honapkepei'><p>Sikertelen regisztráció!</p></div>";
-      echo "<div id='noreg'><a href='regisztracio.php' class='nav-link'>Regisztráljon újra!</a></div>";
-    }
 
 }
 else {
