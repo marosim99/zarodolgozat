@@ -62,6 +62,7 @@
 
         if ((!$error_user) && (!$error_email) && ($pwd == $pwd2) && ($user != $pwd) && (strlen($pwd) > 5)){
             $sql = "INSERT INTO user(username, password, neme, email, bemutatkozas, regdatum) VALUES ('$user','$pwd','$neme','$email','$bemutatkozas',CURDATE());";
+            echo $sql;
             $conn -> query($sql);
             if ($conn -> error == 0){
                 $_SESSION['reg'] = "Sikeres regisztráció!";

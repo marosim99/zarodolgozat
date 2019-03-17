@@ -18,6 +18,16 @@
     <?php
        require "menu.php";
        session_start();
+
+       include '../config/connect.php';
+       $sql = mysqli_query($conn, "SELECT * FROM kategoriak;");
+
+       while ($row = mysqli_fetch_assoc($sql)){
+         echo "<table class='category-table'>";
+        echo "<tr><td class='main-category' colspan='2'>".$row['kat_cim']."</td></tr>";
+        //alkategoriak($row['kat_id']);
+        echo "</table>";
+      }
     ?>
 
     <!-- Optional JavaScript -->

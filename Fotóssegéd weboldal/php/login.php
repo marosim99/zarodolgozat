@@ -12,12 +12,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
    <link rel="stylesheet" href="../style/styles.css">
 
-        <style>
-        span{
-           color: darkred;
-        }
-        </style>
-
     <title>Fotós segéd</title>
   </head>
   <body>
@@ -37,10 +31,12 @@
     <div class="form-group">
 			<label id="label">Felhasználónév</label>
 			<input type="username" class="form-control" id="exampleFormControlInput1" name="username">
+      <span id="userError"></span>
     </div>
 		<div class="form-group">
 			<label id="label">Jelszó</label>
 			<input type="password" class="form-control" id="exampleFormControlInput1" name="password">
+      <span id="pwdError"></span>
 		</div>
 		<div class="form-group">
 		<button type="submit" class="btn btn-dark" id="loginbutton" name="belep">Belépés</button>

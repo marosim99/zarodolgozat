@@ -1,16 +1,5 @@
 <?php
-    require_once("../config/connect.php");
-    session_start();
-      $id = $_SESSION['id'];
 
-     $sql="SELECT * FROM user WHERE id='$id';";
-     $res = $conn -> query($sql);
-     $row = $res -> fetch_assoc();
-
-     $email = $row["email"];
-     $user = $row["username"];
-     $pwd = $row["password"];
-     $bemutatkozas = $row["bemutatkozas"];
  ?>
  <!doctype html>
  <html lang="hu">
@@ -30,7 +19,21 @@
    </head>
    <body>
      <?php
-        require "menu.php";
+       require_once("../config/connect.php");
+       session_start();
+       require "menu.php";
+
+        $id = $_SESSION['id'];
+
+        $sql="SELECT * FROM user WHERE id='$id';";
+        $res = $conn -> query($sql);
+        $row = $res -> fetch_assoc();
+
+        $email = $row["email"];
+        $user = $row["username"];
+        $pwd = $row["password"];
+        $bemutatkozas = $row["bemutatkozas"];
+
         $profImg = "";
         if(file_exists("../kepek/profkep/".$id.".jpg"))
         {
