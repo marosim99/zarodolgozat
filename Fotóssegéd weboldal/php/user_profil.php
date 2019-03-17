@@ -20,13 +20,12 @@
       session_start();
       require "menu.php";
 
-       $id = $_SESSION['id'];
+       $id = $_GET["id"];
 
        $sql="SELECT * FROM user WHERE id='$id';";
        $res = $conn -> query($sql);
        $row = $res -> fetch_assoc();
 
-       $email = $row["email"];
        $user = $row["username"];
        $pwd = $row["password"];
        $bemutatkozas = $row["bemutatkozas"];
@@ -67,19 +66,11 @@
       </div>
       <div class="d-flex align-items-start">
       <br>
-       <p id="label_nagy">Email-cím: <?php echo $email; ?></p>
+       <p id="label_nagy">Regisztráció dátuma: <?php echo $regdatum; ?></p>
      </div>
      <div class="d-flex align-items-start">
      <br>
-      <p id="label_nagy">Regisztráció dátuma: <?php echo $regdatum; ?></p>
-    </div>
-     <div class="d-flex align-items-start">
-     <br>
       <p id="label_nagy">Feltöltött képek száma: <?php  ?></p>
-    </div>
-
-    <div id="noreg">
-       <p><a class="nav-link" href="profil_modositasa.php">Profiladatok módosítása</a></p>
     </div>
 
    </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2019. Már 16. 18:55
+-- Létrehozás ideje: 2019. Már 17. 21:00
 -- Kiszolgáló verziója: 10.1.37-MariaDB
 -- PHP verzió: 7.2.12
 
@@ -27,40 +27,29 @@ USE `fotosseged`;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `alkategoriak`
+-- Tábla szerkezet ehhez a táblához `chat`
 --
 
-CREATE TABLE `alkategoriak` (
-  `alkat_id` int(11) NOT NULL,
-  `kapcs_id` int(11) NOT NULL,
-  `alkat_cim` varchar(128) COLLATE utf8_hungarian_ci NOT NULL,
-  `alkat_leiras` varchar(255) COLLATE utf8_hungarian_ci NOT NULL
+CREATE TABLE `chat` (
+  `uzenet_id` int(11) NOT NULL,
+  `uzenet` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
+  `datum` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- A tábla adatainak kiíratása `alkategoriak`
+-- A tábla adatainak kiíratása `chat`
 --
 
-INSERT INTO `alkategoriak` (`alkat_id`, `kapcs_id`, `alkat_cim`, `alkat_leiras`) VALUES
-(6, 3, 'Városok', 'Budapest és Szeged'),
-(7, 2, 'Sony vs Nikon', 'Melyik a jobb?');
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `bejegyzes`
---
-
-CREATE TABLE `bejegyzes` (
-  `bejegyzes_id` int(11) NOT NULL,
-  `kategoria_id` int(11) NOT NULL,
-  `alkategoria_id` int(11) NOT NULL,
-  `szerzo` varchar(60) COLLATE utf8_hungarian_ci NOT NULL,
-  `cim` varchar(128) COLLATE utf8_hungarian_ci NOT NULL,
-  `tartalom` text COLLATE utf8_hungarian_ci NOT NULL,
-  `poszt_datum` date NOT NULL,
-  `megtekintesek` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+INSERT INTO `chat` (`uzenet_id`, `uzenet`, `datum`, `user_id`) VALUES
+(1, 'proba uzenet, proba felhasznalotol', '2019-03-17 11:22:54', 28),
+(2, 'proba uzenet, admin felhasznalotol', '2019-03-17 11:22:54', 27),
+(3, 'asdfghjk', '2019-03-17 12:03:50', 1),
+(4, 'qwqeweqwe', '2019-03-17 12:18:54', 27),
+(5, 'próóóba', '2019-03-16 23:00:00', 1),
+(6, 'jajajaja', '2019-03-17 14:22:31', 1),
+(7, 'na hali', '2019-03-17 14:25:32', 39),
+(13, 'mmmmhhbbBBWWWOOOAHHHW', '2019-03-17 17:51:49', 39);
 
 -- --------------------------------------------------------
 
@@ -109,25 +98,6 @@ INSERT INTO `gepek` (`id`, `gyarto`, `sorozat`, `tipus`, `pixel`, `szenzor`, `ob
 (14, 'Fujifilm', 'GFX 50S', 'MILC', 51.4, 'CMOS', 'Fujifilm G', 1948890),
 (15, 'Leica', 'SL', 'MILC', 24, 'CMOS', 'Leica L', 1829000),
 (16, 'Pentax', '645Z', 'DSLR', 50, 'CMOS', '645AF2', 1799000);
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `kategoriak`
---
-
-CREATE TABLE `kategoriak` (
-  `kat_id` int(11) NOT NULL,
-  `kat_cim` varchar(64) COLLATE utf8_hungarian_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
--- A tábla adatainak kiíratása `kategoriak`
---
-
-INSERT INTO `kategoriak` (`kat_id`, `kat_cim`) VALUES
-(2, 'Márkák versenye'),
-(3, 'Helyszínek');
 
 -- --------------------------------------------------------
 
@@ -202,56 +172,27 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `neme`, `email`, `bemutatkozas`, `regdatum`) VALUES
+(1, 'marosim99', 'Abc123@', 'férfi', 'marosim99@gmail.com', 'dxsct fgvzhnjkm,l>$d fcvzghnjkom,l>$*sd', '2019-03-17'),
 (27, 'admin', 'admin', 'férfi', 'admin@admin.com', 'Admin vagyok!', '2019-02-27'),
-(28, 'proba1', 'Proba1@', 'férfi', 'proba1@proba.com', 'Próba1 profil.', '2019-03-03');
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `valaszok`
---
-
-CREATE TABLE `valaszok` (
-  `valasz_id` int(11) NOT NULL,
-  `kategoria_id` int(11) NOT NULL,
-  `alkategoria_id` int(11) NOT NULL,
-  `bejegyzes_id` int(11) NOT NULL,
-  `szerzo` varchar(60) COLLATE utf8_hungarian_ci NOT NULL,
-  `komment` text COLLATE utf8_hungarian_ci NOT NULL,
-  `valasz_datum` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+(28, 'proba1', 'Proba1@', 'férfi', 'proba1@proba.com', 'Próba1 profil.', '2019-03-03'),
+(39, 'KimiRaikkonen7', 'Abc123@', 'nő', 'kimi7@alfaromeo.com', 'Kimi vagyok. Bwoah.', '2019-03-17');
 
 --
 -- Indexek a kiírt táblákhoz
 --
 
 --
--- A tábla indexei `alkategoriak`
+-- A tábla indexei `chat`
 --
-ALTER TABLE `alkategoriak`
-  ADD PRIMARY KEY (`alkat_id`),
-  ADD KEY `kapcs_id` (`kapcs_id`);
-
---
--- A tábla indexei `bejegyzes`
---
-ALTER TABLE `bejegyzes`
-  ADD PRIMARY KEY (`bejegyzes_id`),
-  ADD KEY `kategoria_id` (`kategoria_id`),
-  ADD KEY `alkategoria_id` (`alkategoria_id`),
-  ADD KEY `alkategoria_id_2` (`alkategoria_id`);
+ALTER TABLE `chat`
+  ADD PRIMARY KEY (`uzenet_id`),
+  ADD KEY `user_id_2` (`user_id`);
 
 --
 -- A tábla indexei `gepek`
 --
 ALTER TABLE `gepek`
   ADD PRIMARY KEY (`id`);
-
---
--- A tábla indexei `kategoriak`
---
-ALTER TABLE `kategoriak`
-  ADD PRIMARY KEY (`kat_id`);
 
 --
 -- A tábla indexei `kepek`
@@ -272,41 +213,20 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- A tábla indexei `valaszok`
---
-ALTER TABLE `valaszok`
-  ADD PRIMARY KEY (`valasz_id`),
-  ADD KEY `kategoria_id` (`kategoria_id`),
-  ADD KEY `alkategoria_id` (`alkategoria_id`),
-  ADD KEY `bejegyzes_id` (`bejegyzes_id`);
-
---
 -- A kiírt táblák AUTO_INCREMENT értéke
 --
 
 --
--- AUTO_INCREMENT a táblához `alkategoriak`
+-- AUTO_INCREMENT a táblához `chat`
 --
-ALTER TABLE `alkategoriak`
-  MODIFY `alkat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT a táblához `bejegyzes`
---
-ALTER TABLE `bejegyzes`
-  MODIFY `bejegyzes_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `chat`
+  MODIFY `uzenet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT a táblához `gepek`
 --
 ALTER TABLE `gepek`
   MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT a táblához `kategoriak`
---
-ALTER TABLE `kategoriak`
-  MODIFY `kat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT a táblához `kepek`
@@ -324,38 +244,7 @@ ALTER TABLE `objektiv`
 -- AUTO_INCREMENT a táblához `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
-
---
--- AUTO_INCREMENT a táblához `valaszok`
---
-ALTER TABLE `valaszok`
-  MODIFY `valasz_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Megkötések a kiírt táblákhoz
---
-
---
--- Megkötések a táblához `alkategoriak`
---
-ALTER TABLE `alkategoriak`
-  ADD CONSTRAINT `alkategoriak_ibfk_1` FOREIGN KEY (`kapcs_id`) REFERENCES `kategoriak` (`kat_id`);
-
---
--- Megkötések a táblához `bejegyzes`
---
-ALTER TABLE `bejegyzes`
-  ADD CONSTRAINT `bejegyzes_ibfk_1` FOREIGN KEY (`kategoria_id`) REFERENCES `kategoriak` (`kat_id`),
-  ADD CONSTRAINT `bejegyzes_ibfk_2` FOREIGN KEY (`alkategoria_id`) REFERENCES `alkategoriak` (`alkat_id`);
-
---
--- Megkötések a táblához `valaszok`
---
-ALTER TABLE `valaszok`
-  ADD CONSTRAINT `valaszok_ibfk_1` FOREIGN KEY (`kategoria_id`) REFERENCES `kategoriak` (`kat_id`),
-  ADD CONSTRAINT `valaszok_ibfk_2` FOREIGN KEY (`alkategoria_id`) REFERENCES `alkategoriak` (`alkat_id`),
-  ADD CONSTRAINT `valaszok_ibfk_3` FOREIGN KEY (`bejegyzes_id`) REFERENCES `bejegyzes` (`bejegyzes_id`);
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

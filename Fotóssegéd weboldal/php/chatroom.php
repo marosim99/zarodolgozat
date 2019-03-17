@@ -22,9 +22,9 @@
       session_start();
       require "menu.php";
       echo '<br>
-      <h2 class="text-center">Chat</h2><br>';
+      <h2 class="text-center">Chat szoba</h2><br>';
 
-      echo '<div class="container-fluid w-50 scroll" id="scroll">';
+      echo '<div class="container scroll" id="scroll">';
       //echo '<div class="scroll" id="scroll">';
 
       $sql="SELECT * FROM chat ORDER BY datum DESC LIMIT 25;";
@@ -52,16 +52,16 @@
         }
 
 
-        echo '<div class="chat-container">
-        <div class="chat-box center-block">
+        echo '
+        <div class="chat-box">
           <div class="row">
             <div class="col-xs-8 col-md-6">
               <img src="';
               echo $profImg;
               echo'"" class="message-photo">
-              <h4 class="message-name">';
+              <h4 class="message-name"><a href="user_profil.php?id='.$id.'">';
               echo $username;
-              echo '</h4>
+              echo '</a></h4>
             </div>
             <div class="col-xs-4 col-md-6 text-right message-date">';
             echo $row[2];
@@ -70,7 +70,7 @@
           <div class="row message-text">';
           echo $row[1];
           echo '</div>
-          </div>
+
           </div>';
       }
       echo "</div>";
@@ -78,8 +78,8 @@
 
     ?>
 <form method="post" action="chat.php">
-<div class="container-fluid w-50">
-  <div class="messaging center-block">
+<div class="center">
+  <div class="messaging">
     <div class="row">
       <div class="col-md-12">
         <div class="input-group">

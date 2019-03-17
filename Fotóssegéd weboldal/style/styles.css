@@ -160,13 +160,18 @@ div.desc {
 .chat-box {
   background: lightgray;
   padding: 40px;
-  max-width: 600px;
   margin-bottom: 15px;
+	margin-top: auto;
+	margin-right: 0px;
+	margin-left: auto;
 }
 
 .messaging {
-  max-width: 600px;
-  margin-top: 20px;
+  margin-top: 40px;
+	margin-bottom: auto;
+	margin-right: auto;
+	margin-left: auto;
+	width: 40%;
 }
 
 .message-text {
@@ -174,8 +179,8 @@ div.desc {
 }
 
 .message-photo {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   object-fit: cover;
   object-position: center center;
   display: inline-block;
