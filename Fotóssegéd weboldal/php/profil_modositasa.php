@@ -1,6 +1,3 @@
-<?php
-
- ?>
  <!doctype html>
  <html lang="hu">
    <head>
@@ -76,8 +73,8 @@
 <form class="flex-container" method="post" action="update.php">
       <div class="form-group">
         <br>
-        <label for="exampleFormControlTextarea1" id="label">Bemutatkozás módosítása (500 karakter)</label>
-        <textarea type="text" class="form-control" id="exampleFormControlTextarea1" rows="5" maxlength="500" name=bemutatkozas style="width: 450px;"><?php echo $bemutatkozas; ?></textarea>
+        <label for="exampleFormControlTextarea1" id="label">Bemutatkozás módosítása (max. 500 karakter)</label>
+        <textarea type="text" class="form-control" id="exampleFormControlTextarea1" rows="7" maxlength="500" name=bemutatkozas style="width: 450px;"><?php echo $bemutatkozas; ?></textarea>
       </div>
 </div>
 </div>

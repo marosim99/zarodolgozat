@@ -30,8 +30,8 @@
         Beállítások
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="sajat_profil.php">Profil áttekintése</a>
         <a class="dropdown-item" href="profil_modositasa.php">Profil módosítása</a>
-        <a class="dropdown-item" href="#">funkció2</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#">Hibabejelentés</a>
       </div>

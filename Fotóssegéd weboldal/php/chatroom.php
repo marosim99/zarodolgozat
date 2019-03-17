@@ -24,7 +24,10 @@
       echo '<br>
       <h2 class="text-center">Chat</h2><br>';
 
-      $sql="SELECT * FROM chat ORDER BY datum DESC;";
+      echo '<div class="container-fluid w-50 scroll" id="scroll">';
+      //echo '<div class="scroll" id="scroll">';
+
+      $sql="SELECT * FROM chat ORDER BY datum DESC LIMIT 25;";
       $res = $conn -> query($sql);
 
       while($row = $res -> fetch_row()){
@@ -49,7 +52,7 @@
         }
 
 
-        echo '<div class="container">
+        echo '<div class="chat-container">
         <div class="chat-box center-block">
           <div class="row">
             <div class="col-xs-8 col-md-6">
@@ -70,27 +73,30 @@
           </div>
           </div>';
       }
+      echo "</div>";
+      //echo "</div>";
 
     ?>
-
-<div class="container">
+<form method="post" action="chat.php">
+<div class="container-fluid w-50">
   <div class="messaging center-block">
     <div class="row">
       <div class="col-md-12">
         <div class="input-group">
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" name="uzenet">
           <span class="input-group-btn">
-            <button class="btn btn-default" type="button">Küldés</button>
+            <button type="submit" class="btn btn-default" name="kuldes">Küldés</button>
           </span>
         </div>
       </div>
     </div>
   </div>
 </div>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</form>
+<script>
+  //$("#scroll").scrollTop($("#scroll")[0].scrollHeight);
+  //$("#scroll").animate({scrollTop:$("#scroll")[0].scrollHeight}, 1000);
+</script>
+
 </body>
 </html>

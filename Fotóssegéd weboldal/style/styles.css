@@ -21,9 +21,14 @@ input[name="profkep"]{
 }
 
 #profpic{
-	height: 90%;
-	width: 90%;
+	height: 310px;
+	width: 310px;
 	margin-top: 15px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	object-fit: cover;
+  object-position: center center;
+  display: inline-block;
 }
 #cardform{
 	width: 50rem;
@@ -63,6 +68,15 @@ input[name="profkep"]{
 #label{
 	color: white;
 	display: inline-block;
+}
+
+#label_nagy{
+	color: white;
+	font-size: 30px;
+}
+
+#profkep{
+
 }
 
 .nav-link{
@@ -147,7 +161,7 @@ div.desc {
   background: lightgray;
   padding: 40px;
   max-width: 600px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .messaging {
@@ -162,7 +176,6 @@ div.desc {
 .message-photo {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
   object-fit: cover;
   object-position: center center;
   display: inline-block;
@@ -171,4 +184,13 @@ div.desc {
 .message-name {
   margin-left: 10px;
   display: inline-block;
+}
+
+.chat-container{
+  overflow: auto;
+}
+
+.scroll{
+	overflow-y: scroll;
+	height: 600px;
 }
