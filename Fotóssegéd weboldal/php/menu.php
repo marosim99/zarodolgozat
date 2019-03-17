@@ -19,7 +19,7 @@
       <a class="nav-link" href="#"> Feltöltések </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#"> Fórum </a>
+      <a class="nav-link" href="forum.php"> Fórum </a>
     </li>
   </ul>
   <ul class="navbar-nav ml-auto">
