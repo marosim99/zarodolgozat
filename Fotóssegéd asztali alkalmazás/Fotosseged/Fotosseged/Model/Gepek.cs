@@ -61,11 +61,6 @@ namespace Fotosseged.Model
             return tipus;
         }
 
-        public int getTipusId()
-        {
-            return tipusId;
-        }
-
         public double getPixel()
         {
             return pixel;
@@ -126,5 +121,4 @@ namespace Fotosseged.Model
             this.ar = ar;
         }
     }
-}
 }

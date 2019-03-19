@@ -10,6 +10,7 @@ namespace Fotosseged
     {
         static void Main(string[] args)
         {
+
         }
     }
 }

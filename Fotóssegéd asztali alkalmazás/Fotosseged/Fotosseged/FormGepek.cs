@@ -16,5 +16,15 @@ namespace Fotosseged
         {
             InitializeComponent();
         }
+
+        private void FormGepek_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void objektívekToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
