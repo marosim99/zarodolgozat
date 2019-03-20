@@ -120,5 +120,11 @@ namespace Fotosseged.Model
         {
             this.ar = ar;
         }
+
+        public override string ToString()
+        {
+            return id + " " + gyarto + " " + sorozat + " " + tipus + " " + pixel + " " + szenzor + " " + objektiv + " " + ar;
+        }
+
     }
 }

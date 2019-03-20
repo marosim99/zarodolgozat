@@ -15,12 +15,17 @@
     <li class="nav-item">
       <a class="nav-link" href="objektivek.php"> Objektívek </a>
     </li>
+    <?php
+    if(isset($_SESSION['id'])){
+      echo'
     <li class="nav-item">
       <a class="nav-link" href="#"> Feltöltések </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="chatroom.php"> Chat szoba </a>
-    </li>
+    </li>';
+  }
+  ?>
   </ul>
   <ul class="navbar-nav ml-auto">
     <?php
