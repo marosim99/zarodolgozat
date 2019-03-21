@@ -21,8 +21,7 @@
       require_once("../config/connect.php");
       session_start();
       require "menu.php";
-      echo '<br>
-      <h2 class="text-center">Chat szoba</h2><br>';
+      echo '<p id="honapkepei">Chat szoba</p><br>';
 
       echo '<div class="container scroll" id="scroll">';
       //echo '<div class="scroll" id="scroll">';
@@ -85,7 +84,7 @@
         <div class="input-group">
           <input type="text" class="form-control" name="uzenet">
           <span class="input-group-btn">
-            <button type="submit" class="btn btn-default" name="kuldes">Küldés</button>
+            <button type="submit" class="btn btn-default" name="kuldes">Küldés</button><br>
           </span>
         </div>
       </div>
@@ -93,10 +92,6 @@
   </div>
 </div>
 </form>
-<script>
-  //$("#scroll").scrollTop($("#scroll")[0].scrollHeight);
-  //$("#scroll").animate({scrollTop:$("#scroll")[0].scrollHeight}, 1000);
-</script>
 
 </body>
 </html>

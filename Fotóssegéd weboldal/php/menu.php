@@ -19,7 +19,10 @@
     if(isset($_SESSION['id'])){
       echo'
     <li class="nav-item">
-      <a class="nav-link" href="#"> Feltöltések </a>
+      <a class="nav-link" href="#"> Galéria </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="kep_feltolt.php"> Fénykép feltöltése </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="chatroom.php"> Chat szoba </a>
