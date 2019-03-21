@@ -17,6 +17,8 @@ namespace FotossegedAdminApp.Repository
         private Gepek gepek;
         private int ujId;
 
+        private MySQLDatabaseInterface umdi;
+
         public GepekOperations(Gepek gepek)
         {
             this.gepek = gepek;
@@ -35,11 +37,11 @@ namespace FotossegedAdminApp.Repository
         public int getUjId()
         {
             Database d = new Database();
-            MySQLDatabaseInterface mdiId = d.kapcsolodas();
-            mdiId.open();
-            int Id = Convert.ToInt32(mdiId.executeScalarQuery("SELECT MAX(id) FROM gepek"));
+            umdi = d.kapcsolodas();
+            umdi.open();
+            int Id = Convert.ToInt32(umdi.executeScalarQuery("SELECT MAX(id) FROM gepek"));
             int ujId = Id + 1;
-            mdiId.close();
+            umdi.close();
 
             return ujId;
         }

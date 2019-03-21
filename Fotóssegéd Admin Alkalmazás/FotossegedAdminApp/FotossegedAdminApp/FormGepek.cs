@@ -212,7 +212,6 @@ namespace FotossegedAdminApp
         }
 
         private MySQLDatabaseInterface mdi;
-        //private MySQLDatabaseInterface mdi = new MySQLDatabaseInterface();
 
         private DataTable DTG;
 
@@ -331,8 +330,8 @@ namespace FotossegedAdminApp
             int ar = Convert.ToInt32(textBoxAr.Text);
 
             Database update = new Database();
-            MySQLDatabaseInterface umdi = update.kapcsolodas();
-            umdi.open(); string query = "";
+            mdi = update.kapcsolodas();
+            mdi.open(); string query = "";
             query += "INSERT INTO gepek (id,gyarto,sorozat,tipus,pixel,szenzor,objektiv,ar) VALUES ";
             query += "(" + ujId + ", ";
             query += "\"" + gyarto + "\", ";
@@ -342,7 +341,8 @@ namespace FotossegedAdminApp
             query += "\"" + szenzor + "\", ";
             query += "\"" + objektiv + "\", ";
             query += ar + ")";
-            umdi.executeDMQuery(query);
+            mdi.executeDMQuery(query);
+            mdi.close();
 
             int sor = dataGridViewGepek.Rows.Count - 1;
 
@@ -372,6 +372,9 @@ namespace FotossegedAdminApp
 
         }
 
-        
+        private void tabPageObjektivek_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -56,6 +56,7 @@
             this.tabPageObjektivek = new System.Windows.Forms.TabPage();
             this.tabPageFelhasznalok = new System.Windows.Forms.TabPage();
             this.buttonBack = new System.Windows.Forms.Button();
+            this.tabPageStats = new System.Windows.Forms.TabPage();
             this.tabControlGepek.SuspendLayout();
             this.tabPageGepek.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGepek)).BeginInit();
@@ -66,6 +67,7 @@
             this.tabControlGepek.Controls.Add(this.tabPageGepek);
             this.tabControlGepek.Controls.Add(this.tabPageObjektivek);
             this.tabControlGepek.Controls.Add(this.tabPageFelhasznalok);
+            this.tabControlGepek.Controls.Add(this.tabPageStats);
             this.tabControlGepek.Location = new System.Drawing.Point(-1, 0);
             this.tabControlGepek.Name = "tabControlGepek";
             this.tabControlGepek.SelectedIndex = 0;
@@ -334,6 +336,7 @@
             this.tabPageObjektivek.TabIndex = 1;
             this.tabPageObjektivek.Text = "Objektívek";
             this.tabPageObjektivek.UseVisualStyleBackColor = true;
+            this.tabPageObjektivek.Click += new System.EventHandler(this.tabPageObjektivek_Click);
             // 
             // tabPageFelhasznalok
             // 
@@ -355,6 +358,15 @@
             this.buttonBack.Text = "Vissza";
             this.buttonBack.UseVisualStyleBackColor = false;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+            // 
+            // tabPageStats
+            // 
+            this.tabPageStats.Location = new System.Drawing.Point(4, 22);
+            this.tabPageStats.Name = "tabPageStats";
+            this.tabPageStats.Size = new System.Drawing.Size(987, 532);
+            this.tabPageStats.TabIndex = 3;
+            this.tabPageStats.Text = "Statisztikák";
+            this.tabPageStats.UseVisualStyleBackColor = true;
             // 
             // FormGepek
             // 
@@ -405,6 +417,7 @@
         private System.Windows.Forms.TabPage tabPageFelhasznalok;
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Button buttonBack;
+        private System.Windows.Forms.TabPage tabPageStats;
     }
 }
 
