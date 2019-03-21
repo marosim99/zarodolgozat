@@ -60,6 +60,7 @@
     <Compile Include="Model\Objektivek.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\GepekDatabaseOperations.cs" />
     <EmbeddedResource Include="FormGepek.resx">
       <DependentUpon>FormGepek.cs</DependentUpon>
     </EmbeddedResource>
