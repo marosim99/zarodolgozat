@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 //solution explorer on add references-> .Net -> select System.Windows.Forms. 
 using System.Windows.Forms;
 
-namespace ConnectToMysqlDatabase
+namespace ConnectToMysqlDatabase.Database
 {
     class MySQLDatabaseInterface
     {

@@ -1,11 +1,11 @@
-﻿using ConnectToMysqlDatabase;
+﻿using ConnectToMysqlDatabase.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fotosseged.Model
+namespace Fotosseged.Database
 {
     class Database
     {
@@ -14,7 +14,7 @@ namespace Fotosseged.Model
             MySQLDatabaseInterface mdi = new MySQLDatabaseInterface();
             mdi.setErrorToUserInterface(true);
             mdi.setErrorToGraphicalUserInterface(false);
-            mdi.setConnectionServerData("localhost", "fotosseged2", "3306");
+            mdi.setConnectionServerData("localhost", "fotosseged", "3306");
             mdi.setConnectionUserData("root", "");
             mdi.makeConnectionToDatabase();
 

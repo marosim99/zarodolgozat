@@ -121,6 +121,7 @@
             this.dataGridViewGepek.Name = "dataGridViewGepek";
             this.dataGridViewGepek.Size = new System.Drawing.Size(527, 522);
             this.dataGridViewGepek.TabIndex = 0;
+            this.dataGridViewGepek.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGepek_CellValueChanged);
             // 
             // buttonLoad
             // 
@@ -156,6 +157,7 @@
             this.buttonDelete.TabIndex = 3;
             this.buttonDelete.Text = "Kijelölt sor törlése";
             this.buttonDelete.UseVisualStyleBackColor = false;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonNew
             // 
@@ -179,6 +181,7 @@
             this.buttonSave.TabIndex = 5;
             this.buttonSave.Text = "Mentés";
             this.buttonSave.UseVisualStyleBackColor = false;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonCancel
             // 

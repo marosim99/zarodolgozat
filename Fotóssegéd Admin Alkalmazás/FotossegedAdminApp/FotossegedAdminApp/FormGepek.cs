@@ -1,5 +1,5 @@
-﻿using ConnectToMysqlDatabase;
-using Fotosseged.Model;
+﻿using ConnectToMysqlDatabase.Database;
+using Fotosseged.Database;
 using FotossegedAdminApp.Repository;
 using System;
 using System.Collections.Generic;
@@ -16,8 +16,10 @@ namespace FotossegedAdminApp
     
     public partial class FormGepek : Form
     {
-        private DataTable DTG;
         GepekDatabaseOperations GDO;
+        
+        
+        bool modositva = false;
         public FormGepek()
         {
             InitializeComponent();
@@ -127,11 +129,11 @@ namespace FotossegedAdminApp
         private void beallitVezerloketModositaskor()
         {
             buttonAdd.Visible = false;
-            buttonCancel.Visible = true;
+            buttonCancel.Visible = false;
             buttonDelete.Visible = true;
             buttonEdit.Visible = true;
             buttonNew.Visible = true;
-            buttonSave.Visible = true;
+            buttonSave.Visible = false;
 
             textBoxAr.Visible = false;
             textBoxGyarto.Visible = false;
@@ -169,7 +171,7 @@ namespace FotossegedAdminApp
             buttonDelete.Visible = false;
             buttonEdit.Visible = false;
             buttonNew.Visible = false;
-            buttonSave.Visible = true;
+            buttonSave.Visible = false;
 
             textBoxAr.Visible = true;
             textBoxGyarto.Visible = true;
@@ -194,12 +196,17 @@ namespace FotossegedAdminApp
             dataGridViewGepek.AllowUserToDeleteRows = false;
         }
 
+        private MySQLDatabaseInterface mdi;
+        //private MySQLDatabaseInterface mdi = new MySQLDatabaseInterface();
+
+        private DataTable DTG;
+
         private void AdatokFeltoltese()
         {
             Database md = new Database();
-            MySQLDatabaseInterface mdi = md.kapcsolodas();
+            mdi = md.kapcsolodas();
             mdi.open();
-            string query = "SELECT * FROM gepek ";
+            string query = "SELECT * FROM gepek;";
             DTG = mdi.getToDataTable(query);
             mdi.close();
             dataGridViewGepek.DataSource = DTG;
@@ -208,6 +215,52 @@ namespace FotossegedAdminApp
         private void buttonExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dataGridViewGepek_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            modositva = true;
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {            
+                int sor = dataGridViewGepek.SelectedRows[0].Index;
+                if (MessageBox.Show("Valóban törölni akarja a sort?", "Törlés", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                {
+
+                    dataGridViewGepek.Rows.RemoveAt(sor);
+
+                    buttonSave.Visible = true;
+                    buttonCancel.Visible = true;
+                    modositva = true;
+                }
+                else
+                    return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Jelölje ki a törlendő sort!", "Törlés", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            if (!modositva)
+            {
+                MessageBox.Show("Nem lett módosítva egy adat sem.", "Módosítás", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                mdi.updateChangesInTable(DTG);
+                beallitVezerloketModositaskor();
+
+                buttonNew.Enabled = true;
+                buttonEdit.Enabled = true;
+                buttonDelete.Enabled = true;
+            }
         }
 
         
