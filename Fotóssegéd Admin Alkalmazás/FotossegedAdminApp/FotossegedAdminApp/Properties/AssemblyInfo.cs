@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Fotosseged")]
+[assembly: AssemblyTitle("FotossegedAdminApp")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Fotosseged")]
+[assembly: AssemblyProduct("FotossegedAdminApp")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1aecbf25-47bc-46e5-9683-91789acc3170")]
+[assembly: Guid("6e908ca2-27fb-4726-a19c-0f3a5c0eb697")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -8,14 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Fotosseged
+namespace FotossegedAdminApp
 {
     public partial class FormGepek : Form
     {
         public FormGepek()
         {
             InitializeComponent();
-
         }
 
         private void FormGepek_Load(object sender, EventArgs e)
@@ -30,45 +29,27 @@ namespace Fotosseged
             buttonDelete.Visible = false;
             buttonEdit.Visible = false;
             buttonNew.Visible = false;
+            buttonSave.Visible = false;
+
+            textBoxAr.Visible = false;
+            textBoxGyarto.Visible = false;
+            textBoxObjektiv.Visible = false;
+            textBoxPixel.Visible = false;
+            textBoxAr.Visible = false;
+            textBoxSorozat.Visible = false;
+            textBoxSzenzor.Visible = false;
+            textBoxTipus.Visible = false;
+
+            labelAr.Visible = false;
+            labelGyarto.Visible = false;
+            labelObjektiv.Visible = false;
+            labelPixel.Visible = false;
+            labelAr.Visible = false;
+            labelSorozat.Visible = false;
+            labelSzenzor.Visible = false;
+            labelTipus.Visible = false;
 
             buttonLoad.Visible = true;
         }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-
-
-
-
-
-
-
-        private void objektívekToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-       
     }
-    
 }
