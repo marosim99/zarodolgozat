@@ -1,5 +1,6 @@
 ﻿using ConnectToMysqlDatabase.Database;
 using Fotosseged.Database;
+using Fotosseged.Model;
 using FotossegedAdminApp.Repository;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace FotossegedAdminApp
     
     public partial class FormGepek : Form
     {
-        GepekDatabaseOperations GDO;
+        GepekOperations GDO;
         
         
         bool modositva = false;
@@ -39,6 +40,7 @@ namespace FotossegedAdminApp
         private void buttonEdit_Click(object sender, EventArgs e)
         {
             beallitVezerloketModositaskor();
+
         }
 
         private void buttonNew_Click(object sender, EventArgs e)
@@ -52,6 +54,13 @@ namespace FotossegedAdminApp
             beallitVezerloketModositaskor();
         }
 
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            AdatokFeltoltese();
+            beallitVezerloketModositaskor();
+        }
+
+
         /// <summary>
         /// Program indulása után csak a betöltés gomb legyen látható
         /// </summary>
@@ -63,6 +72,7 @@ namespace FotossegedAdminApp
             buttonEdit.Visible = false;
             buttonNew.Visible = false;
             buttonSave.Visible = false;
+            buttonBack.Visible = false;
 
             textBoxAr.Visible = false;
             textBoxGyarto.Visible = false;
@@ -98,6 +108,7 @@ namespace FotossegedAdminApp
             buttonEdit.Visible = true;
             buttonNew.Visible = false;
             buttonSave.Visible = false;
+            buttonBack.Visible = false;
 
             textBoxAr.Visible = false;
             textBoxGyarto.Visible = false;
@@ -134,6 +145,7 @@ namespace FotossegedAdminApp
             buttonEdit.Visible = true;
             buttonNew.Visible = true;
             buttonSave.Visible = false;
+            buttonBack.Visible = false;
 
             textBoxAr.Visible = false;
             textBoxGyarto.Visible = false;
@@ -158,6 +170,7 @@ namespace FotossegedAdminApp
             dataGridViewGepek.ReadOnly = false;
             dataGridViewGepek.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewGepek.AllowUserToDeleteRows = false;
+            
         }
 
         /// <summary>
@@ -167,11 +180,12 @@ namespace FotossegedAdminApp
         {
             buttonLoad.Visible = false;
             buttonAdd.Visible = true;
-            buttonCancel.Visible = true;
+            buttonCancel.Visible = false;
             buttonDelete.Visible = false;
             buttonEdit.Visible = false;
             buttonNew.Visible = false;
             buttonSave.Visible = false;
+            buttonBack.Visible = true;
 
             textBoxAr.Visible = true;
             textBoxGyarto.Visible = true;
@@ -194,6 +208,7 @@ namespace FotossegedAdminApp
             dataGridViewGepek.ReadOnly = false;
             dataGridViewGepek.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewGepek.AllowUserToDeleteRows = false;
+            this.ActiveControl = textBoxGyarto;
         }
 
         private MySQLDatabaseInterface mdi;
@@ -248,6 +263,7 @@ namespace FotossegedAdminApp
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            
             if (!modositva)
             {
                 MessageBox.Show("Nem lett módosítva egy adat sem.", "Módosítás", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -261,6 +277,99 @@ namespace FotossegedAdminApp
                 buttonEdit.Enabled = true;
                 buttonDelete.Enabled = true;
             }
+        }
+
+
+
+        private void dataGridViewGepek_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            buttonSave.Visible = true;
+            buttonCancel.Visible = true;
+            modositva = true;
+
+            int sor = dataGridViewGepek.SelectedRows[0].Index;
+            //int gepid = Convert.ToInt32(dataGridViewGepek.Rows[sor].Cells["id"].Value);
+
+
+            Gepek gepek = new Gepek(
+                Convert.ToInt32(dataGridViewGepek.SelectedRows[0].Cells["id"].Value),
+                dataGridViewGepek.SelectedRows[0].Cells["gyarto"].Value.ToString(),
+                dataGridViewGepek.SelectedRows[0].Cells["sorozat"].Value.ToString(),
+                dataGridViewGepek.SelectedRows[0].Cells["tipus"].Value.ToString(),
+                Convert.ToDouble(dataGridViewGepek.SelectedRows[0].Cells["pixel"].Value),
+                dataGridViewGepek.SelectedRows[0].Cells["szenzor"].Value.ToString(),
+                dataGridViewGepek.SelectedRows[0].Cells["objektiv"].Value.ToString(),
+                Convert.ToInt32(dataGridViewGepek.SelectedRows[0].Cells["ar"].Value)
+                );
+
+                GepekOperations go = new GepekOperations(gepek);
+
+                Gepek modositottGepek = go.getModositottGepek();
+
+                dataGridViewGepek.Rows[sor].Cells["gyarto"].Value = modositottGepek.getGyarto();
+                dataGridViewGepek.Rows[sor].Cells["sorozat"].Value = modositottGepek.getSorozat();
+                dataGridViewGepek.Rows[sor].Cells["tipus"].Value = modositottGepek.getTipus();
+                dataGridViewGepek.Rows[sor].Cells["pixel"].Value = modositottGepek.getPixel();
+                dataGridViewGepek.Rows[sor].Cells["szenzor"].Value = modositottGepek.getSzenzor();
+                dataGridViewGepek.Rows[sor].Cells["objektiv"].Value = modositottGepek.getObjektiv();
+                dataGridViewGepek.Rows[sor].Cells["ar"].Value = modositottGepek.getAr();
+            
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            int ujId = 0;
+            GepekOperations go = new GepekOperations(ujId);
+            ujId = go.getUjId();
+
+            string gyarto = textBoxGyarto.Text;
+            string sorozat = textBoxSorozat.Text;
+            string tipus = textBoxTipus.Text;
+            double pixel = Convert.ToDouble(textBoxPixel.Text);
+            string szenzor = textBoxSzenzor.Text;
+            string objektiv = textBoxObjektiv.Text;
+            int ar = Convert.ToInt32(textBoxAr.Text);
+
+            Database update = new Database();
+            MySQLDatabaseInterface umdi = update.kapcsolodas();
+            umdi.open(); string query = "";
+            query += "INSERT INTO gepek (id,gyarto,sorozat,tipus,pixel,szenzor,objektiv,ar) VALUES ";
+            query += "(" + ujId + ", ";
+            query += "\"" + gyarto + "\", ";
+            query += "\"" + sorozat + "\", ";
+            query += "\"" + tipus + "\", ";
+            query += pixel + ", ";
+            query += "\"" + szenzor + "\", ";
+            query += "\"" + objektiv + "\", ";
+            query += ar + ")";
+            umdi.executeDMQuery(query);
+
+            int sor = dataGridViewGepek.Rows.Count - 1;
+
+            dataGridViewGepek.Rows[sor].Cells["id"].Value = ujId;
+            dataGridViewGepek.Rows[sor].Cells["gyarto"].Value = gyarto;
+            dataGridViewGepek.Rows[sor].Cells["sorozat"].Value = sorozat;
+            dataGridViewGepek.Rows[sor].Cells["tipus"].Value = tipus;
+            dataGridViewGepek.Rows[sor].Cells["pixel"].Value = pixel;
+            dataGridViewGepek.Rows[sor].Cells["szenzor"].Value = szenzor;
+            dataGridViewGepek.Rows[sor].Cells["objektiv"].Value = objektiv;
+            dataGridViewGepek.Rows[sor].Cells["ar"].Value = ar;
+
+            textBoxGyarto.Clear();
+            textBoxSorozat.Clear();
+            textBoxTipus.Clear();
+            textBoxPixel.Clear();
+            textBoxSzenzor.Clear();
+            textBoxObjektiv.Clear();
+            textBoxAr.Clear();
+
+        }
+
+
+
+        private void dataGridViewGepek_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         

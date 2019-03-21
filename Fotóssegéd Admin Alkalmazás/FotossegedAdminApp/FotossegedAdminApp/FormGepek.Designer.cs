@@ -30,31 +30,32 @@
         {
             this.tabControlGepek = new System.Windows.Forms.TabControl();
             this.tabPageGepek = new System.Windows.Forms.TabPage();
-            this.tabPageObjektivek = new System.Windows.Forms.TabPage();
-            this.dataGridViewGepek = new System.Windows.Forms.DataGridView();
-            this.buttonLoad = new System.Windows.Forms.Button();
-            this.buttonEdit = new System.Windows.Forms.Button();
-            this.buttonDelete = new System.Windows.Forms.Button();
-            this.buttonNew = new System.Windows.Forms.Button();
-            this.buttonSave = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonExit = new System.Windows.Forms.Button();
             this.labelAr = new System.Windows.Forms.Label();
+            this.dataGridViewGepek = new System.Windows.Forms.DataGridView();
             this.labelObjektiv = new System.Windows.Forms.Label();
+            this.buttonAdd = new System.Windows.Forms.Button();
             this.labelSzenzor = new System.Windows.Forms.Label();
+            this.buttonLoad = new System.Windows.Forms.Button();
             this.labelPixel = new System.Windows.Forms.Label();
+            this.buttonEdit = new System.Windows.Forms.Button();
             this.labelTipus = new System.Windows.Forms.Label();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.labelSorozat = new System.Windows.Forms.Label();
+            this.buttonNew = new System.Windows.Forms.Button();
             this.labelGyarto = new System.Windows.Forms.Label();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.textBoxAr = new System.Windows.Forms.TextBox();
+            this.buttonCancel = new System.Windows.Forms.Button();
             this.textBoxObjektiv = new System.Windows.Forms.TextBox();
+            this.textBoxGyarto = new System.Windows.Forms.TextBox();
             this.textBoxSzenzor = new System.Windows.Forms.TextBox();
+            this.textBoxSorozat = new System.Windows.Forms.TextBox();
             this.textBoxPixel = new System.Windows.Forms.TextBox();
             this.textBoxTipus = new System.Windows.Forms.TextBox();
-            this.textBoxSorozat = new System.Windows.Forms.TextBox();
-            this.textBoxGyarto = new System.Windows.Forms.TextBox();
+            this.tabPageObjektivek = new System.Windows.Forms.TabPage();
             this.tabPageFelhasznalok = new System.Windows.Forms.TabPage();
-            this.buttonExit = new System.Windows.Forms.Button();
+            this.buttonBack = new System.Windows.Forms.Button();
             this.tabControlGepek.SuspendLayout();
             this.tabPageGepek.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGepek)).BeginInit();
@@ -74,6 +75,7 @@
             // tabPageGepek
             // 
             this.tabPageGepek.BackColor = System.Drawing.Color.Gainsboro;
+            this.tabPageGepek.Controls.Add(this.buttonBack);
             this.tabPageGepek.Controls.Add(this.buttonExit);
             this.tabPageGepek.Controls.Add(this.labelAr);
             this.tabPageGepek.Controls.Add(this.dataGridViewGepek);
@@ -104,15 +106,26 @@
             this.tabPageGepek.TabIndex = 0;
             this.tabPageGepek.Text = "Fényképezőgépek";
             // 
-            // tabPageObjektivek
+            // buttonExit
             // 
-            this.tabPageObjektivek.Location = new System.Drawing.Point(4, 22);
-            this.tabPageObjektivek.Name = "tabPageObjektivek";
-            this.tabPageObjektivek.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageObjektivek.Size = new System.Drawing.Size(987, 532);
-            this.tabPageObjektivek.TabIndex = 1;
-            this.tabPageObjektivek.Text = "Objektívek";
-            this.tabPageObjektivek.UseVisualStyleBackColor = true;
+            this.buttonExit.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.buttonExit.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonExit.Location = new System.Drawing.Point(790, 488);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(178, 34);
+            this.buttonExit.TabIndex = 34;
+            this.buttonExit.Text = "Kilépés";
+            this.buttonExit.UseVisualStyleBackColor = false;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            // 
+            // labelAr
+            // 
+            this.labelAr.AutoSize = true;
+            this.labelAr.Location = new System.Drawing.Point(608, 465);
+            this.labelAr.Name = "labelAr";
+            this.labelAr.Size = new System.Drawing.Size(17, 13);
+            this.labelAr.TabIndex = 33;
+            this.labelAr.Text = "Ár";
             // 
             // dataGridViewGepek
             // 
@@ -121,7 +134,39 @@
             this.dataGridViewGepek.Name = "dataGridViewGepek";
             this.dataGridViewGepek.Size = new System.Drawing.Size(527, 522);
             this.dataGridViewGepek.TabIndex = 0;
+            this.dataGridViewGepek.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGepek_CellContentDoubleClick);
+            this.dataGridViewGepek.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGepek_CellDoubleClick);
             this.dataGridViewGepek.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGepek_CellValueChanged);
+            // 
+            // labelObjektiv
+            // 
+            this.labelObjektiv.AutoSize = true;
+            this.labelObjektiv.Location = new System.Drawing.Point(577, 424);
+            this.labelObjektiv.Name = "labelObjektiv";
+            this.labelObjektiv.Size = new System.Drawing.Size(48, 13);
+            this.labelObjektiv.TabIndex = 32;
+            this.labelObjektiv.Text = "Objektív";
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.buttonAdd.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonAdd.Location = new System.Drawing.Point(564, 488);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(178, 34);
+            this.buttonAdd.TabIndex = 7;
+            this.buttonAdd.Text = "Listához adás";
+            this.buttonAdd.UseVisualStyleBackColor = false;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // labelSzenzor
+            // 
+            this.labelSzenzor.AutoSize = true;
+            this.labelSzenzor.Location = new System.Drawing.Point(580, 383);
+            this.labelSzenzor.Name = "labelSzenzor";
+            this.labelSzenzor.Size = new System.Drawing.Size(45, 13);
+            this.labelSzenzor.TabIndex = 31;
+            this.labelSzenzor.Text = "Szenzor";
             // 
             // buttonLoad
             // 
@@ -135,6 +180,15 @@
             this.buttonLoad.UseVisualStyleBackColor = false;
             this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
             // 
+            // labelPixel
+            // 
+            this.labelPixel.AutoSize = true;
+            this.labelPixel.Location = new System.Drawing.Point(596, 343);
+            this.labelPixel.Name = "labelPixel";
+            this.labelPixel.Size = new System.Drawing.Size(29, 13);
+            this.labelPixel.TabIndex = 30;
+            this.labelPixel.Text = "Pixel";
+            // 
             // buttonEdit
             // 
             this.buttonEdit.BackColor = System.Drawing.SystemColors.ControlDark;
@@ -147,11 +201,20 @@
             this.buttonEdit.UseVisualStyleBackColor = false;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
+            // labelTipus
+            // 
+            this.labelTipus.AutoSize = true;
+            this.labelTipus.Location = new System.Drawing.Point(590, 305);
+            this.labelTipus.Name = "labelTipus";
+            this.labelTipus.Size = new System.Drawing.Size(35, 13);
+            this.labelTipus.TabIndex = 29;
+            this.labelTipus.Text = "Típus";
+            // 
             // buttonDelete
             // 
             this.buttonDelete.BackColor = System.Drawing.SystemColors.ControlDark;
             this.buttonDelete.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonDelete.Location = new System.Drawing.Point(564, 109);
+            this.buttonDelete.Location = new System.Drawing.Point(564, 125);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(178, 34);
             this.buttonDelete.TabIndex = 3;
@@ -159,17 +222,35 @@
             this.buttonDelete.UseVisualStyleBackColor = false;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
+            // labelSorozat
+            // 
+            this.labelSorozat.AutoSize = true;
+            this.labelSorozat.Location = new System.Drawing.Point(582, 264);
+            this.labelSorozat.Name = "labelSorozat";
+            this.labelSorozat.Size = new System.Drawing.Size(43, 13);
+            this.labelSorozat.TabIndex = 28;
+            this.labelSorozat.Text = "Sorozat";
+            // 
             // buttonNew
             // 
             this.buttonNew.BackColor = System.Drawing.SystemColors.ControlDark;
             this.buttonNew.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonNew.Location = new System.Drawing.Point(564, 160);
+            this.buttonNew.Location = new System.Drawing.Point(564, 176);
             this.buttonNew.Name = "buttonNew";
             this.buttonNew.Size = new System.Drawing.Size(178, 34);
             this.buttonNew.TabIndex = 4;
-            this.buttonNew.Text = "Új fényképezőgép";
+            this.buttonNew.Text = "Új fényképezőgépek felvitele";
             this.buttonNew.UseVisualStyleBackColor = false;
             this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
+            // 
+            // labelGyarto
+            // 
+            this.labelGyarto.AutoSize = true;
+            this.labelGyarto.Location = new System.Drawing.Point(587, 224);
+            this.labelGyarto.Name = "labelGyarto";
+            this.labelGyarto.Size = new System.Drawing.Size(38, 13);
+            this.labelGyarto.TabIndex = 27;
+            this.labelGyarto.Text = "Gyártó";
             // 
             // buttonSave
             // 
@@ -183,6 +264,13 @@
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
+            // textBoxAr
+            // 
+            this.textBoxAr.Location = new System.Drawing.Point(639, 462);
+            this.textBoxAr.Name = "textBoxAr";
+            this.textBoxAr.Size = new System.Drawing.Size(103, 20);
+            this.textBoxAr.TabIndex = 26;
+            // 
             // buttonCancel
             // 
             this.buttonCancel.BackColor = System.Drawing.SystemColors.ControlDark;
@@ -195,128 +283,57 @@
             this.buttonCancel.UseVisualStyleBackColor = false;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
-            // buttonAdd
-            // 
-            this.buttonAdd.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.buttonAdd.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonAdd.Location = new System.Drawing.Point(564, 467);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(178, 34);
-            this.buttonAdd.TabIndex = 7;
-            this.buttonAdd.Text = "Adatok felvitele";
-            this.buttonAdd.UseVisualStyleBackColor = false;
-            // 
-            // labelAr
-            // 
-            this.labelAr.AutoSize = true;
-            this.labelAr.Location = new System.Drawing.Point(608, 444);
-            this.labelAr.Name = "labelAr";
-            this.labelAr.Size = new System.Drawing.Size(17, 13);
-            this.labelAr.TabIndex = 33;
-            this.labelAr.Text = "Ár";
-            // 
-            // labelObjektiv
-            // 
-            this.labelObjektiv.AutoSize = true;
-            this.labelObjektiv.Location = new System.Drawing.Point(577, 403);
-            this.labelObjektiv.Name = "labelObjektiv";
-            this.labelObjektiv.Size = new System.Drawing.Size(48, 13);
-            this.labelObjektiv.TabIndex = 32;
-            this.labelObjektiv.Text = "Objektív";
-            // 
-            // labelSzenzor
-            // 
-            this.labelSzenzor.AutoSize = true;
-            this.labelSzenzor.Location = new System.Drawing.Point(580, 362);
-            this.labelSzenzor.Name = "labelSzenzor";
-            this.labelSzenzor.Size = new System.Drawing.Size(45, 13);
-            this.labelSzenzor.TabIndex = 31;
-            this.labelSzenzor.Text = "Szenzor";
-            // 
-            // labelPixel
-            // 
-            this.labelPixel.AutoSize = true;
-            this.labelPixel.Location = new System.Drawing.Point(596, 322);
-            this.labelPixel.Name = "labelPixel";
-            this.labelPixel.Size = new System.Drawing.Size(29, 13);
-            this.labelPixel.TabIndex = 30;
-            this.labelPixel.Text = "Pixel";
-            // 
-            // labelTipus
-            // 
-            this.labelTipus.AutoSize = true;
-            this.labelTipus.Location = new System.Drawing.Point(590, 284);
-            this.labelTipus.Name = "labelTipus";
-            this.labelTipus.Size = new System.Drawing.Size(35, 13);
-            this.labelTipus.TabIndex = 29;
-            this.labelTipus.Text = "Típus";
-            // 
-            // labelSorozat
-            // 
-            this.labelSorozat.AutoSize = true;
-            this.labelSorozat.Location = new System.Drawing.Point(582, 243);
-            this.labelSorozat.Name = "labelSorozat";
-            this.labelSorozat.Size = new System.Drawing.Size(43, 13);
-            this.labelSorozat.TabIndex = 28;
-            this.labelSorozat.Text = "Sorozat";
-            // 
-            // labelGyarto
-            // 
-            this.labelGyarto.AutoSize = true;
-            this.labelGyarto.Location = new System.Drawing.Point(587, 203);
-            this.labelGyarto.Name = "labelGyarto";
-            this.labelGyarto.Size = new System.Drawing.Size(38, 13);
-            this.labelGyarto.TabIndex = 27;
-            this.labelGyarto.Text = "Gyártó";
-            // 
-            // textBoxAr
-            // 
-            this.textBoxAr.Location = new System.Drawing.Point(639, 441);
-            this.textBoxAr.Name = "textBoxAr";
-            this.textBoxAr.Size = new System.Drawing.Size(103, 20);
-            this.textBoxAr.TabIndex = 26;
-            // 
             // textBoxObjektiv
             // 
-            this.textBoxObjektiv.Location = new System.Drawing.Point(639, 400);
+            this.textBoxObjektiv.Location = new System.Drawing.Point(639, 421);
             this.textBoxObjektiv.Name = "textBoxObjektiv";
             this.textBoxObjektiv.Size = new System.Drawing.Size(103, 20);
             this.textBoxObjektiv.TabIndex = 25;
             // 
+            // textBoxGyarto
+            // 
+            this.textBoxGyarto.Location = new System.Drawing.Point(639, 221);
+            this.textBoxGyarto.Name = "textBoxGyarto";
+            this.textBoxGyarto.Size = new System.Drawing.Size(103, 20);
+            this.textBoxGyarto.TabIndex = 20;
+            // 
             // textBoxSzenzor
             // 
-            this.textBoxSzenzor.Location = new System.Drawing.Point(639, 359);
+            this.textBoxSzenzor.Location = new System.Drawing.Point(639, 380);
             this.textBoxSzenzor.Name = "textBoxSzenzor";
             this.textBoxSzenzor.Size = new System.Drawing.Size(103, 20);
             this.textBoxSzenzor.TabIndex = 24;
             // 
+            // textBoxSorozat
+            // 
+            this.textBoxSorozat.Location = new System.Drawing.Point(639, 261);
+            this.textBoxSorozat.Name = "textBoxSorozat";
+            this.textBoxSorozat.Size = new System.Drawing.Size(103, 20);
+            this.textBoxSorozat.TabIndex = 21;
+            // 
             // textBoxPixel
             // 
-            this.textBoxPixel.Location = new System.Drawing.Point(639, 319);
+            this.textBoxPixel.Location = new System.Drawing.Point(639, 340);
             this.textBoxPixel.Name = "textBoxPixel";
             this.textBoxPixel.Size = new System.Drawing.Size(103, 20);
             this.textBoxPixel.TabIndex = 23;
             // 
             // textBoxTipus
             // 
-            this.textBoxTipus.Location = new System.Drawing.Point(639, 281);
+            this.textBoxTipus.Location = new System.Drawing.Point(639, 302);
             this.textBoxTipus.Name = "textBoxTipus";
             this.textBoxTipus.Size = new System.Drawing.Size(103, 20);
             this.textBoxTipus.TabIndex = 22;
             // 
-            // textBoxSorozat
+            // tabPageObjektivek
             // 
-            this.textBoxSorozat.Location = new System.Drawing.Point(639, 240);
-            this.textBoxSorozat.Name = "textBoxSorozat";
-            this.textBoxSorozat.Size = new System.Drawing.Size(103, 20);
-            this.textBoxSorozat.TabIndex = 21;
-            // 
-            // textBoxGyarto
-            // 
-            this.textBoxGyarto.Location = new System.Drawing.Point(639, 200);
-            this.textBoxGyarto.Name = "textBoxGyarto";
-            this.textBoxGyarto.Size = new System.Drawing.Size(103, 20);
-            this.textBoxGyarto.TabIndex = 20;
+            this.tabPageObjektivek.Location = new System.Drawing.Point(4, 22);
+            this.tabPageObjektivek.Name = "tabPageObjektivek";
+            this.tabPageObjektivek.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageObjektivek.Size = new System.Drawing.Size(987, 532);
+            this.tabPageObjektivek.TabIndex = 1;
+            this.tabPageObjektivek.Text = "Objektívek";
+            this.tabPageObjektivek.UseVisualStyleBackColor = true;
             // 
             // tabPageFelhasznalok
             // 
@@ -327,17 +344,17 @@
             this.tabPageFelhasznalok.Text = "Felhasználók";
             this.tabPageFelhasznalok.UseVisualStyleBackColor = true;
             // 
-            // buttonExit
+            // buttonBack
             // 
-            this.buttonExit.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.buttonExit.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonExit.Location = new System.Drawing.Point(803, 488);
-            this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(178, 34);
-            this.buttonExit.TabIndex = 34;
-            this.buttonExit.Text = "Kilépés";
-            this.buttonExit.UseVisualStyleBackColor = false;
-            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            this.buttonBack.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.buttonBack.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonBack.Location = new System.Drawing.Point(790, 444);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(178, 34);
+            this.buttonBack.TabIndex = 35;
+            this.buttonBack.Text = "Vissza";
+            this.buttonBack.UseVisualStyleBackColor = false;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // FormGepek
             // 
@@ -387,6 +404,7 @@
         private System.Windows.Forms.TextBox textBoxGyarto;
         private System.Windows.Forms.TabPage tabPageFelhasznalok;
         private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.Button buttonBack;
     }
 }
 
