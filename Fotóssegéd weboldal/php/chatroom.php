@@ -73,7 +73,6 @@
           </div>';
       }
       echo "</div>";
-      //echo "</div>";
 
     ?>
 <form method="post" action="chat.php">
