@@ -61,3 +61,4 @@ if(isset($_POST['belep'])){
 
     }
     echo "</body>";
+echo "</html>";
