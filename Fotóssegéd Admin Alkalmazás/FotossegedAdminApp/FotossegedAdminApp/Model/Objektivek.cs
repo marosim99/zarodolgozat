@@ -12,33 +12,27 @@ namespace Fotosseged.Model
         private string tipus;
         private string gyarto;
         private string nev;
+        private int gyujtotav;
         private bool stabil;
         private double minblende;
         private double maxblende;
+        private int hossz;
         private int suly;
         private int ar;
 
-        public Objektivek(int id, string tipus, string gyarto, string nev, bool stabil, double minblende, double maxblende, int suly, int ar)
+        public Objektivek(int id, string tipus, string gyarto, string nev, int gyujtotav, bool stabil, double minblende, double maxblende, int hossz, int suly, int ar)
         {
             this.id = id;
             this.tipus = tipus;
             this.gyarto = gyarto;
             this.nev = nev;
+            this.gyujtotav = gyujtotav;
             this.stabil = stabil;
             this.minblende = minblende;
             this.maxblende = maxblende;
+            this.hossz = hossz;
             this.suly = suly;
             this.ar = ar;
-        }
-
-        public override bool Equals(object obj)
-        {
-            return base.Equals(obj);
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
         }
 
         public int getId()
@@ -61,6 +55,11 @@ namespace Fotosseged.Model
             return nev;
         }
 
+        public int getGyujtotav()
+        {
+            return gyujtotav;
+        }
+
         public bool getStabil()
         {
             return stabil;
@@ -76,6 +75,11 @@ namespace Fotosseged.Model
             return maxblende;
         }
 
+        public int getHossz()
+        {
+            return hossz;
+        }
+
         public int getSuly()
         {
             return suly;
@@ -86,10 +90,64 @@ namespace Fotosseged.Model
             return ar;
         }
 
+        public void setId(int id)
+        {
+            this.id = id;
+        }
+
+        public void setTipus(string tipus)
+        {
+            this.tipus = tipus;
+        }
+
+        public void setGyarto(string gyarto)
+        {
+            this.gyarto = gyarto;
+        }
+
+        public void setNev(string nev)
+        {
+            this.nev = nev;
+        }
+
+        public void setGyujtotav(int gyujtotav)
+        {
+            this.gyujtotav = gyujtotav;
+        }
+
+        public void setStabil(bool stabil)
+        {
+            this.stabil = stabil;
+        }
+
+        public void setMinblende(double minblende)
+        {
+            this.minblende = minblende;
+        }
+
+        public void setMaxblende(double maxblende)
+        {
+            this.maxblende = maxblende;
+        }
+
+        public void setHossz(int hossz)
+        {
+            this.hossz = hossz;
+        }
+
+        public void setSuly(int suly)
+        {
+            this.suly = suly;
+        }
+
+        public void setAr(int ar)
+        {
+            this.ar = ar;
+        }
 
         public override string ToString()
         {
-            return id+" "+tipus+" "+gyarto + " " + stabil + " " + minblende + " " + maxblende + " " + suly + " " + ar;
+            return id + " "+ tipus + " " + gyarto + " " + nev + " " + gyujtotav + " " + stabil + " " + minblende + " " + maxblende + " " + hossz + " " + suly + " " + ar;
         }
     }
 }

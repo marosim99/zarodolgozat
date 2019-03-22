@@ -3,34 +3,40 @@ using Fotosseged.Database;
 using Fotosseged.Model;
 using FotossegedAdminApp.Repository;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FotossegedAdminApp
 {
-    
+
     public partial class FormGepek : Form
     {
-        GepekOperations GDO;
+        //GepekOperations GDO;
+        ObjektivOperations OO;
         
         
-        bool modositva = false;
+        bool modositva_gep = false;
+        bool modositva_objektiv = false;
+        bool modositva_felhasznalo = false;
+
         public FormGepek()
         {
             InitializeComponent();
         }
 
+        private MySQLDatabaseInterface mdi;
+
+        private DataTable DTG; //Gépek tábla
+        private DataTable DTO; //Objektívek tábla
+        private DataTable DTU; //Felhasználók tábla
+
         private void FormGepek_Load(object sender, EventArgs e)
         {
             beallitVezerloketIndulaskor();
+            beallitVezerloketIndulaskor_Objektivre();
         }
 
+        #region
         private void buttonLoad_Click(object sender, EventArgs e)
         {
             AdatokFeltoltese();
@@ -60,7 +66,6 @@ namespace FotossegedAdminApp
             beallitVezerloketModositaskor();
         }
 
-
         /// <summary>
         /// Program indulása után csak a betöltés gomb legyen látható
         /// </summary>
@@ -74,7 +79,6 @@ namespace FotossegedAdminApp
             buttonSave.Visible = false;
             buttonBack.Visible = false;
 
-            textBoxAr.Visible = false;
             textBoxGyarto.Visible = false;
             textBoxObjektiv.Visible = false;
             textBoxPixel.Visible = false;
@@ -87,15 +91,13 @@ namespace FotossegedAdminApp
             labelGyarto.Visible = false;
             labelObjektiv.Visible = false;
             labelPixel.Visible = false;
-            labelAr.Visible = false;
             labelSorozat.Visible = false;
             labelSzenzor.Visible = false;
             labelTipus.Visible = false;
 
             buttonLoad.Visible = true;
+            buttonExit.Visible = true;
         }
-
-        
 
         /// <summary>
         /// Adatok betöltése után csak a módosít gomb legyen látható, a DGV legyen csak olvasható
@@ -114,7 +116,6 @@ namespace FotossegedAdminApp
             textBoxGyarto.Visible = false;
             textBoxObjektiv.Visible = false;
             textBoxPixel.Visible = false;
-            textBoxAr.Visible = false;
             textBoxSorozat.Visible = false;
             textBoxSzenzor.Visible = false;
             textBoxTipus.Visible = false;
@@ -123,12 +124,12 @@ namespace FotossegedAdminApp
             labelGyarto.Visible = false;
             labelObjektiv.Visible = false;
             labelPixel.Visible = false;
-            labelAr.Visible = false;
             labelSorozat.Visible = false;
             labelSzenzor.Visible = false;
             labelTipus.Visible = false;
 
             buttonLoad.Visible = true;
+            buttonExit.Visible = true;
 
             dataGridViewGepek.ReadOnly = true;
             dataGridViewGepek.AllowUserToDeleteRows = false;
@@ -151,7 +152,6 @@ namespace FotossegedAdminApp
             textBoxGyarto.Visible = false;
             textBoxObjektiv.Visible = false;
             textBoxPixel.Visible = false;
-            textBoxAr.Visible = false;
             textBoxSorozat.Visible = false;
             textBoxSzenzor.Visible = false;
             textBoxTipus.Visible = false;
@@ -160,7 +160,6 @@ namespace FotossegedAdminApp
             labelGyarto.Visible = false;
             labelObjektiv.Visible = false;
             labelPixel.Visible = false;
-            labelAr.Visible = false;
             labelSorozat.Visible = false;
             labelSzenzor.Visible = false;
             labelTipus.Visible = false;
@@ -191,7 +190,6 @@ namespace FotossegedAdminApp
             textBoxGyarto.Visible = true;
             textBoxObjektiv.Visible = true;
             textBoxPixel.Visible = true;
-            textBoxAr.Visible = true;
             textBoxSorozat.Visible = true;
             textBoxSzenzor.Visible = true;
             textBoxTipus.Visible = true;
@@ -200,10 +198,11 @@ namespace FotossegedAdminApp
             labelGyarto.Visible = true;
             labelObjektiv.Visible = true;
             labelPixel.Visible = true;
-            labelAr.Visible = true;
             labelSorozat.Visible = true;
             labelSzenzor.Visible = true;
             labelTipus.Visible = true;
+
+            buttonExit.Visible = true;
 
             dataGridViewGepek.ReadOnly = false;
             dataGridViewGepek.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -211,10 +210,9 @@ namespace FotossegedAdminApp
             this.ActiveControl = textBoxGyarto;
         }
 
-        private MySQLDatabaseInterface mdi;
-
-        private DataTable DTG;
-
+        /// <summary>
+        /// Feltölti a gépek táblát adatbázisból
+        /// </summary>
         private void AdatokFeltoltese()
         {
             Database md = new Database();
@@ -233,7 +231,7 @@ namespace FotossegedAdminApp
 
         private void dataGridViewGepek_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            modositva = true;
+            modositva_gep = true;
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -248,7 +246,7 @@ namespace FotossegedAdminApp
 
                     buttonSave.Visible = true;
                     buttonCancel.Visible = true;
-                    modositva = true;
+                    modositva_gep = true;
                 }
                 else
                     return;
@@ -263,7 +261,7 @@ namespace FotossegedAdminApp
         private void buttonSave_Click(object sender, EventArgs e)
         {
             
-            if (!modositva)
+            if (!modositva_gep)
             {
                 MessageBox.Show("Nem lett módosítva egy adat sem.", "Módosítás", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -278,13 +276,11 @@ namespace FotossegedAdminApp
             }
         }
 
-
-
         private void dataGridViewGepek_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             buttonSave.Visible = true;
             buttonCancel.Visible = true;
-            modositva = true;
+            modositva_gep = true;
 
             int sor = dataGridViewGepek.SelectedRows[0].Index;
             //int gepid = Convert.ToInt32(dataGridViewGepek.Rows[sor].Cells["id"].Value);
@@ -364,17 +360,307 @@ namespace FotossegedAdminApp
             textBoxAr.Clear();
 
         }
+        #endregion
+        
+        #region
 
-
-
-        private void dataGridViewGepek_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void buttonLoadO_Click(object sender, EventArgs e)
         {
-
+            ObjektivAdatokFeltoltese();
+            beallitVezerloketBetolteskor_Objektivre();
         }
 
-        private void tabPageObjektivek_Click(object sender, EventArgs e)
+        private void buttonEditO_Click(object sender, EventArgs e)
         {
+            beallitVezerloketModositaskor_Objektivre();
+        }
 
+        private void buttonNewO_Click(object sender, EventArgs e)
+        {
+            beallitVezerloketUjAdatFelvitelhez_Objektivre();
+        }
+
+        private void buttonCancelO_Click(object sender, EventArgs e)
+        {
+            AdatokFeltoltese();
+            beallitVezerloketModositaskor_Objektivre();
+        }
+
+        private void buttonBackO_Click(object sender, EventArgs e)
+        {
+            AdatokFeltoltese();
+            beallitVezerloketModositaskor_Objektivre();
+        }
+
+        private void ObjektivAdatokFeltoltese()
+        {
+            Database md = new Database();
+            mdi = md.kapcsolodas();
+            mdi.open();
+            string query = "SELECT * FROM objektiv;";
+            DTO = mdi.getToDataTable(query);
+            mdi.close();
+            dataGridViewObjektiv.DataSource = DTO;
+        }
+
+        private void beallitVezerloketIndulaskor_Objektivre()
+        {
+            buttonAddO.Visible = false;
+            buttonCancelO.Visible = false;
+            buttonDeleteO.Visible = false;
+            buttonEditO.Visible = false;
+            buttonNewO.Visible = false;
+            buttonSaveO.Visible = false;
+            buttonBackO.Visible = false;
+ 
+            textBoxGyartoO.Visible = false;
+            textBoxTipusO.Visible = false;
+            textBoxNev.Visible = false;
+            textBoxGyujto.Visible = false;
+            radioButtonNincs.Visible = false;
+            radioButtonVan.Visible = false;
+            textBoxMaxB.Visible = false;
+            textBoxMinB.Visible = false;
+            textBoxHossz.Visible = false;
+            textBoxSuly.Visible = false;
+            textBoxArO.Visible = false;
+
+            
+            labelGyartoO.Visible = false;
+            labelTipusO.Visible = false;
+            labelNev.Visible = false;
+            labelGyujto.Visible = false;
+            labelStabil.Visible = false;
+            labelMinB.Visible = false;
+            labelMaxB.Visible = false;
+            labelHossz.Visible = false;
+            labelSuly.Visible = false;
+            labelArO.Visible = false;
+
+            buttonLoadO.Visible = true;
+            buttonExit.Visible = true;
+            
+        }
+
+        private void beallitVezerloketBetolteskor_Objektivre()
+        {
+            buttonAddO.Visible = false;
+            buttonCancelO.Visible = false;
+            buttonDeleteO.Visible = false;
+            buttonEditO.Visible = true;
+            buttonNewO.Visible = false;
+            buttonSaveO.Visible = false;
+            buttonBackO.Visible = false;
+
+            textBoxGyartoO.Visible = false;
+            textBoxTipusO.Visible = false;
+            textBoxNev.Visible = false;
+            textBoxGyujto.Visible = false;
+            radioButtonNincs.Visible = false;
+            radioButtonVan.Visible = false;
+            textBoxMaxB.Visible = false;
+            textBoxMinB.Visible = false;
+            textBoxHossz.Visible = false;
+            textBoxSuly.Visible = false;
+            textBoxArO.Visible = false;
+
+
+            labelGyartoO.Visible = false;
+            labelTipusO.Visible = false;
+            labelNev.Visible = false;
+            labelGyujto.Visible = false;
+            labelStabil.Visible = false;
+            labelMinB.Visible = false;
+            labelMaxB.Visible = false;
+            labelHossz.Visible = false;
+            labelSuly.Visible = false;
+            labelArO.Visible = false;
+
+            buttonLoadO.Visible = true;
+            buttonExit.Visible = true;
+
+            dataGridViewObjektiv.ReadOnly = true;
+            dataGridViewObjektiv.AllowUserToDeleteRows = false;
+        }
+
+        private void beallitVezerloketModositaskor_Objektivre()
+        {
+            buttonAddO.Visible = false;
+            buttonCancelO.Visible = false;
+            buttonDeleteO.Visible = true;
+            buttonEditO.Visible = true;
+            buttonNewO.Visible = true;
+            buttonSaveO.Visible = false;
+            buttonBackO.Visible = false;
+
+            textBoxGyartoO.Visible = false;
+            textBoxTipusO.Visible = false;
+            textBoxNev.Visible = false;
+            textBoxGyujto.Visible = false;
+            radioButtonNincs.Visible = false;
+            radioButtonVan.Visible = false;
+            textBoxMaxB.Visible = false;
+            textBoxMinB.Visible = false;
+            textBoxHossz.Visible = false;
+            textBoxSuly.Visible = false;
+            textBoxArO.Visible = false;
+
+
+            labelGyartoO.Visible = false;
+            labelTipusO.Visible = false;
+            labelNev.Visible = false;
+            labelGyujto.Visible = false;
+            labelStabil.Visible = false;
+            labelMinB.Visible = false;
+            labelMaxB.Visible = false;
+            labelHossz.Visible = false;
+            labelSuly.Visible = false;
+            labelArO.Visible = false;
+
+            buttonLoadO.Visible = true;
+            buttonExit.Visible = true;
+
+            dataGridViewObjektiv.ReadOnly = true;
+            dataGridViewObjektiv.AllowUserToDeleteRows = false;
+
+            dataGridViewObjektiv.ReadOnly = false;
+            dataGridViewObjektiv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewObjektiv.AllowUserToDeleteRows = false;
+        }
+
+        private void beallitVezerloketUjAdatFelvitelhez_Objektivre()
+        {
+            buttonAddO.Visible = true;
+            buttonCancelO.Visible = false;
+            buttonDeleteO.Visible = false;
+            buttonEditO.Visible = false;
+            buttonNewO.Visible = false;
+            buttonSaveO.Visible = false;
+            buttonBackO.Visible = true;
+
+            textBoxGyartoO.Visible = true;
+            textBoxTipusO.Visible = true;
+            textBoxNev.Visible = true;
+            textBoxGyujto.Visible = true;
+            radioButtonNincs.Visible = true;
+            radioButtonVan.Visible = true;
+            textBoxMaxB.Visible = true;
+            textBoxMinB.Visible = true;
+            textBoxHossz.Visible = true;
+            textBoxSuly.Visible = true;
+            textBoxArO.Visible = true;
+
+
+            labelGyartoO.Visible = true;
+            labelTipusO.Visible = true;
+            labelNev.Visible = true;
+            labelGyujto.Visible = true;
+            labelStabil.Visible = true;
+            labelMinB.Visible = true;
+            labelMaxB.Visible = true;
+            labelHossz.Visible = true;
+            labelSuly.Visible = true;
+            labelArO.Visible = true;
+
+            buttonLoadO.Visible = false;
+            buttonExit.Visible = true;
+
+            dataGridViewObjektiv.ReadOnly = true;
+            dataGridViewObjektiv.AllowUserToDeleteRows = false;
+
+            dataGridViewObjektiv.ReadOnly = false;
+            dataGridViewObjektiv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewObjektiv.AllowUserToDeleteRows = false;
+            this.ActiveControl = textBoxTipusO;
+        }
+
+
+        private void dataGridViewObjektiv_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            modositva_objektiv = true;
+        }
+
+        private void buttonDeleteO_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int sor = dataGridViewObjektiv.SelectedRows[0].Index;
+                if (MessageBox.Show("Valóban törölni akarja a sort?", "Törlés", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                {
+
+                    dataGridViewObjektiv.Rows.RemoveAt(sor);
+
+                    buttonSaveO.Visible = true;
+                    buttonCancelO.Visible = true;
+                    modositva_objektiv = true;
+                }
+                else
+                    return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Jelölje ki a törlendő sort!", "Törlés", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+        }
+
+        private void buttonSaveO_Click(object sender, EventArgs e)
+        {
+            if (!modositva_objektiv)
+            {
+                MessageBox.Show("Nem lett módosítva egy adat sem.", "Módosítás", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                mdi.updateChangesInTable(DTO);
+                beallitVezerloketModositaskor_Objektivre();
+
+                buttonNewO.Enabled = true;
+                buttonEditO.Enabled = true;
+                buttonDeleteO.Enabled = true;
+            }
+        }
+
+        #endregion
+
+        private void dataGridViewObjektiv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            buttonSaveO.Visible = true;
+            buttonCancelO.Visible = true;
+            modositva_objektiv = true;
+
+            int sor = dataGridViewObjektiv.SelectedRows[0].Index;
+            //int gepid = Convert.ToInt32(dataGridViewGepek.Rows[sor].Cells["id"].Value);
+
+
+            Objektivek objektiv = new Objektivek(
+                Convert.ToInt32(dataGridViewObjektiv.SelectedRows[0].Cells["id"].Value),
+                dataGridViewObjektiv.SelectedRows[0].Cells["tipus"].Value.ToString(),
+                dataGridViewObjektiv.SelectedRows[0].Cells["gyarto"].Value.ToString(),
+                dataGridViewObjektiv.SelectedRows[0].Cells["nev"].Value.ToString(),
+                Convert.ToInt32(dataGridViewObjektiv.SelectedRows[0].Cells["gyujtotav"].Value),
+                Convert.ToBoolean(dataGridViewObjektiv.SelectedRows[0].Cells["stabil"].Value),
+                Convert.ToDouble(dataGridViewObjektiv.SelectedRows[0].Cells["minblende"].Value),
+                Convert.ToDouble(dataGridViewObjektiv.SelectedRows[0].Cells["maxblende"].Value),
+                Convert.ToInt32(dataGridViewObjektiv.SelectedRows[0].Cells["hossz"].Value),
+                Convert.ToInt32(dataGridViewObjektiv.SelectedRows[0].Cells["suly"].Value),
+                Convert.ToInt32(dataGridViewObjektiv.SelectedRows[0].Cells["ar"].Value)
+                );
+
+            ObjektivOperations oo = new ObjektivOperations(objektiv);
+
+            Objektivek modositottObejktivek = oo.getModositottObjektivek();
+
+            dataGridViewObjektiv.Rows[sor].Cells["tipus"].Value = modositottObejktivek.getTipus();
+            dataGridViewObjektiv.Rows[sor].Cells["gyarto"].Value = modositottObejktivek.getGyarto();
+            dataGridViewObjektiv.Rows[sor].Cells["nev"].Value = modositottObejktivek.getNev();
+            dataGridViewObjektiv.Rows[sor].Cells["gyujtotav"].Value = modositottObejktivek.getGyujtotav();
+            dataGridViewObjektiv.Rows[sor].Cells["stabil"].Value = modositottObejktivek.getStabil();
+            dataGridViewObjektiv.Rows[sor].Cells["minblende"].Value = modositottObejktivek.getMinblende();
+            dataGridViewObjektiv.Rows[sor].Cells["maxblende"].Value = modositottObejktivek.getMaxblende();
+            dataGridViewObjektiv.Rows[sor].Cells["hossz"].Value = modositottObejktivek.getHossz();
+            dataGridViewObjektiv.Rows[sor].Cells["suly"].Value = modositottObejktivek.getSuly();
+            dataGridViewObjektiv.Rows[sor].Cells["ar"].Value = modositottObejktivek.getAr();
         }
     }
 }
