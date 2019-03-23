@@ -12,12 +12,12 @@ namespace FotossegedAdminApp
     public partial class FormGepek : Form
     {
         //GepekOperations GDO;
-        ObjektivOperations OO;
+        //ObjektivOperations OO;
         
         
         bool modositva_gep = false;
         bool modositva_objektiv = false;
-        bool modositva_felhasznalo = false;
+        bool modositva_user = false;
 
         public FormGepek()
         {
@@ -34,9 +34,11 @@ namespace FotossegedAdminApp
         {
             beallitVezerloketIndulaskor();
             beallitVezerloketIndulaskor_Objektivre();
+            beallitVezerloketIndulaskor_User();
         }
 
-        #region
+        #region Fényképezőgépek Tab
+
         private void buttonLoad_Click(object sender, EventArgs e)
         {
             AdatokFeltoltese();
@@ -362,7 +364,7 @@ namespace FotossegedAdminApp
         }
         #endregion
         
-        #region
+        #region Objektívek Tab
 
         private void buttonLoadO_Click(object sender, EventArgs e)
         {
@@ -382,7 +384,7 @@ namespace FotossegedAdminApp
 
         private void buttonCancelO_Click(object sender, EventArgs e)
         {
-            AdatokFeltoltese();
+            ObjektivAdatokFeltoltese();
             beallitVezerloketModositaskor_Objektivre();
         }
 
@@ -574,7 +576,6 @@ namespace FotossegedAdminApp
             this.ActiveControl = textBoxTipusO;
         }
 
-
         private void dataGridViewObjektiv_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             modositva_objektiv = true;
@@ -621,8 +622,6 @@ namespace FotossegedAdminApp
             }
         }
 
-        #endregion
-
         private void dataGridViewObjektiv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             buttonSaveO.Visible = true;
@@ -630,8 +629,6 @@ namespace FotossegedAdminApp
             modositva_objektiv = true;
 
             int sor = dataGridViewObjektiv.SelectedRows[0].Index;
-            //int gepid = Convert.ToInt32(dataGridViewGepek.Rows[sor].Cells["id"].Value);
-
 
             Objektivek objektiv = new Objektivek(
                 Convert.ToInt32(dataGridViewObjektiv.SelectedRows[0].Cells["id"].Value),
@@ -731,5 +728,154 @@ namespace FotossegedAdminApp
             textBoxSuly.Clear();
             textBoxArO.Clear();
         }
+
+        #endregion
+
+        #region Felhasználók tab
+
+        private void buttonLoadU_Click(object sender, EventArgs e)
+        {
+            UserAdatokFeltoltese();
+            beallitVezerloketBetolteskor_User();
+        }
+
+        private void buttonEditU_Click(object sender, EventArgs e)
+        {
+            beallitVezerloketModositaskor_User();
+        }
+
+        private void buttonCancelU_Click(object sender, EventArgs e)
+        {
+            UserAdatokFeltoltese();
+            beallitVezerloketModositaskor_User();
+        }
+
+        private void UserAdatokFeltoltese()
+        {
+            Database md = new Database();
+            mdi = md.kapcsolodas();
+            mdi.open();
+            string query = "SELECT id, username, neme, email, admin FROM user;";
+            DTU = mdi.getToDataTable(query);
+            mdi.close();
+            dataGridViewUsers.DataSource = DTU;
+        }
+
+        private void beallitVezerloketIndulaskor_User()
+        {
+            buttonCancelU.Visible = false;
+            buttonDeleteU.Visible = false;
+            buttonEditU.Visible = false;
+            buttonSaveU.Visible = false;
+
+            buttonLoadU.Visible = true;
+            buttonExit.Visible = true;
+        }
+
+        private void beallitVezerloketBetolteskor_User()
+        {
+            buttonCancelU.Visible = false;
+            buttonDeleteU.Visible = false;
+            buttonEditU.Visible = true;
+            buttonSaveU.Visible = false;
+
+            buttonLoadU.Visible = true;
+            buttonExit.Visible = true;
+
+            dataGridViewUsers.ReadOnly = true;
+            dataGridViewUsers.AllowUserToDeleteRows = false;
+
+        }
+
+        private void beallitVezerloketModositaskor_User()
+        {
+            buttonCancelU.Visible = true;
+            buttonDeleteU.Visible = true;
+            buttonEditU.Visible = true;
+            buttonSaveU.Visible = true;
+
+            buttonLoadU.Visible = true;
+            buttonExit.Visible = true;
+
+            dataGridViewUsers.ReadOnly = false;
+            dataGridViewUsers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewUsers.AllowUserToDeleteRows = false;
+        }
+
+        private void dataGridViewUsers_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            modositva_user = true;
+        }
+
+        private void buttonDeleteU_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int sor = dataGridViewUsers.SelectedRows[0].Index;
+                if (MessageBox.Show("Valóban törölni akarja a sort?", "Törlés", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                {
+
+                    dataGridViewUsers.Rows.RemoveAt(sor);
+
+                    buttonSaveU.Visible = true;
+                    buttonCancelU.Visible = true;
+                    modositva_user = true;
+                }
+                else
+                    return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Jelölje ki a törlendő sort!", "Törlés", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+        }
+
+        private void buttonSaveU_Click(object sender, EventArgs e)
+        {
+            if (!modositva_user)
+            {
+                MessageBox.Show("Nem lett módosítva egy adat sem.", "Módosítás", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                mdi.updateChangesInTable(DTU);
+                beallitVezerloketModositaskor_User();
+
+                buttonEditU.Enabled = true;
+                buttonDeleteU.Enabled = true;
+            }
+        }
+
+        private void dataGridViewUsers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            buttonSaveU.Visible = true;
+            buttonCancelU.Visible = true;
+            modositva_user = true;
+
+            int sor = dataGridViewUsers.SelectedRows[0].Index;
+
+
+            Felhasznalok users = new Felhasznalok(
+                Convert.ToInt32(dataGridViewUsers.SelectedRows[0].Cells["id"].Value),
+                dataGridViewUsers.SelectedRows[0].Cells["username"].Value.ToString(),
+                dataGridViewUsers.SelectedRows[0].Cells["neme"].Value.ToString(),
+                dataGridViewUsers.SelectedRows[0].Cells["email"].Value.ToString(),
+                Convert.ToBoolean(dataGridViewUsers.SelectedRows[0].Cells["admin"].Value)                
+                );
+
+            UserOperations uo = new UserOperations(users);
+
+            Felhasznalok modositottFelhasznalok = uo.getModositottFelhasznalok();
+
+            dataGridViewUsers.Rows[sor].Cells["username"].Value = modositottFelhasznalok.getFnev();
+            dataGridViewUsers.Rows[sor].Cells["neme"].Value = modositottFelhasznalok.getNem();
+            dataGridViewUsers.Rows[sor].Cells["email"].Value = modositottFelhasznalok.getEmail();
+            dataGridViewUsers.Rows[sor].Cells["admin"].Value = modositottFelhasznalok.getAdmin();
+        }
+
+        #endregion
+
+        
     }
 }

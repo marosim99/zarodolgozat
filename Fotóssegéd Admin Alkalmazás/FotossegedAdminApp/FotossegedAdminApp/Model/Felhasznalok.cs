@@ -12,19 +12,70 @@ namespace Fotosseged.Model
         private string fnev;
         private string nem;
         private string email;
-        private string bemutatkozas;
-        private DateTime regdatum;
+        private bool admin;
 
-        public Felhasznalok(int id, string fnev, string nem, string email, string bemutatkozas, DateTime regdatum)
+        public Felhasznalok(int id, string fnev, string nem, string email, bool admin)
         {
             this.id = id;
             this.fnev = fnev;
             this.nem = nem;
             this.email = email;
-            this.bemutatkozas = bemutatkozas;
-            this.regdatum = regdatum;
+            this.admin = admin;
         }
 
+        public int getId()
+        {
+            return id;
+        }
 
+        public string getFnev()
+        {
+            return fnev;
+        }
+
+        public string getNem()
+        {
+            return nem;
+        }
+
+        public string getEmail()
+        {
+            return email;
+        }
+
+        public bool getAdmin()
+        {
+            return admin;
+        }
+
+        public void setId(int id)
+        {
+            this.id = id;
+        }
+
+        public void setFnev(string fnev)
+        {
+            this.fnev = fnev;
+        }
+
+        public void setNem(string nem)
+        {
+            this.nem = nem;
+        }
+
+        public void setEmail(string email)
+        {
+            this.email = email;
+        }
+
+        public void setAdmin(bool admin)
+        {
+            this.admin = admin;
+        }
+
+        public override string ToString()
+        {
+            return id + " " + fnev + " " + nem + " " + email + " " + admin;
+        }
     }
 }

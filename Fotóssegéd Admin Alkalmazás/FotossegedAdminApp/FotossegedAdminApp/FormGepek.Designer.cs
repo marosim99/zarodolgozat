@@ -85,6 +85,12 @@
             this.buttonLoadO = new System.Windows.Forms.Button();
             this.dataGridViewObjektiv = new System.Windows.Forms.DataGridView();
             this.tabPageFelhasznalok = new System.Windows.Forms.TabPage();
+            this.buttonSaveU = new System.Windows.Forms.Button();
+            this.buttonCancelU = new System.Windows.Forms.Button();
+            this.buttonDeleteU = new System.Windows.Forms.Button();
+            this.buttonEditU = new System.Windows.Forms.Button();
+            this.buttonLoadU = new System.Windows.Forms.Button();
+            this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
             this.tabPageStats = new System.Windows.Forms.TabPage();
             this.buttonExit = new System.Windows.Forms.Button();
             this.tabControlGepek.SuspendLayout();
@@ -92,6 +98,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGepek)).BeginInit();
             this.tabPageObjektivek.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewObjektiv)).BeginInit();
+            this.tabPageFelhasznalok.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlGepek
@@ -683,11 +691,87 @@
             // tabPageFelhasznalok
             // 
             this.tabPageFelhasznalok.BackColor = System.Drawing.Color.Gainsboro;
+            this.tabPageFelhasznalok.Controls.Add(this.buttonSaveU);
+            this.tabPageFelhasznalok.Controls.Add(this.buttonCancelU);
+            this.tabPageFelhasznalok.Controls.Add(this.buttonDeleteU);
+            this.tabPageFelhasznalok.Controls.Add(this.buttonEditU);
+            this.tabPageFelhasznalok.Controls.Add(this.buttonLoadU);
+            this.tabPageFelhasznalok.Controls.Add(this.dataGridViewUsers);
             this.tabPageFelhasznalok.Location = new System.Drawing.Point(4, 22);
             this.tabPageFelhasznalok.Name = "tabPageFelhasznalok";
             this.tabPageFelhasznalok.Size = new System.Drawing.Size(987, 531);
             this.tabPageFelhasznalok.TabIndex = 2;
             this.tabPageFelhasznalok.Text = "Felhasználók";
+            // 
+            // buttonSaveU
+            // 
+            this.buttonSaveU.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.buttonSaveU.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonSaveU.Location = new System.Drawing.Point(773, 16);
+            this.buttonSaveU.Name = "buttonSaveU";
+            this.buttonSaveU.Size = new System.Drawing.Size(178, 34);
+            this.buttonSaveU.TabIndex = 61;
+            this.buttonSaveU.Text = "Mentés";
+            this.buttonSaveU.UseVisualStyleBackColor = false;
+            this.buttonSaveU.Click += new System.EventHandler(this.buttonSaveU_Click);
+            // 
+            // buttonCancelU
+            // 
+            this.buttonCancelU.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.buttonCancelU.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonCancelU.Location = new System.Drawing.Point(773, 68);
+            this.buttonCancelU.Name = "buttonCancelU";
+            this.buttonCancelU.Size = new System.Drawing.Size(178, 34);
+            this.buttonCancelU.TabIndex = 62;
+            this.buttonCancelU.Text = "Mégse";
+            this.buttonCancelU.UseVisualStyleBackColor = false;
+            this.buttonCancelU.Click += new System.EventHandler(this.buttonCancelU_Click);
+            // 
+            // buttonDeleteU
+            // 
+            this.buttonDeleteU.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.buttonDeleteU.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonDeleteU.Location = new System.Drawing.Point(550, 137);
+            this.buttonDeleteU.Name = "buttonDeleteU";
+            this.buttonDeleteU.Size = new System.Drawing.Size(178, 34);
+            this.buttonDeleteU.TabIndex = 60;
+            this.buttonDeleteU.Text = "Kijelölt sor törlése";
+            this.buttonDeleteU.UseVisualStyleBackColor = false;
+            this.buttonDeleteU.Click += new System.EventHandler(this.buttonDeleteU_Click);
+            // 
+            // buttonEditU
+            // 
+            this.buttonEditU.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.buttonEditU.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonEditU.Location = new System.Drawing.Point(550, 68);
+            this.buttonEditU.Name = "buttonEditU";
+            this.buttonEditU.Size = new System.Drawing.Size(178, 34);
+            this.buttonEditU.TabIndex = 59;
+            this.buttonEditU.Text = "Adatok módosítása";
+            this.buttonEditU.UseVisualStyleBackColor = false;
+            this.buttonEditU.Click += new System.EventHandler(this.buttonEditU_Click);
+            // 
+            // buttonLoadU
+            // 
+            this.buttonLoadU.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.buttonLoadU.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonLoadU.Location = new System.Drawing.Point(550, 16);
+            this.buttonLoadU.Name = "buttonLoadU";
+            this.buttonLoadU.Size = new System.Drawing.Size(178, 34);
+            this.buttonLoadU.TabIndex = 58;
+            this.buttonLoadU.Text = "Objektívadatok betöltése";
+            this.buttonLoadU.UseVisualStyleBackColor = false;
+            this.buttonLoadU.Click += new System.EventHandler(this.buttonLoadU_Click);
+            // 
+            // dataGridViewUsers
+            // 
+            this.dataGridViewUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewUsers.Location = new System.Drawing.Point(0, 3);
+            this.dataGridViewUsers.Name = "dataGridViewUsers";
+            this.dataGridViewUsers.Size = new System.Drawing.Size(530, 519);
+            this.dataGridViewUsers.TabIndex = 1;
+            this.dataGridViewUsers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsers_CellDoubleClick);
+            this.dataGridViewUsers.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsers_CellValueChanged);
             // 
             // tabPageStats
             // 
@@ -729,6 +813,8 @@
             this.tabPageObjektivek.ResumeLayout(false);
             this.tabPageObjektivek.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewObjektiv)).EndInit();
+            this.tabPageFelhasznalok.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -794,6 +880,12 @@
         private System.Windows.Forms.Button buttonCancelO;
         private System.Windows.Forms.TextBox textBoxSuly;
         private System.Windows.Forms.Label labelSuly;
+        private System.Windows.Forms.DataGridView dataGridViewUsers;
+        private System.Windows.Forms.Button buttonSaveU;
+        private System.Windows.Forms.Button buttonCancelU;
+        private System.Windows.Forms.Button buttonDeleteU;
+        private System.Windows.Forms.Button buttonEditU;
+        private System.Windows.Forms.Button buttonLoadU;
     }
 }
 
