@@ -26,7 +26,6 @@
     $uzenet = trim($_POST["uzenet"]);
 
     $sql = "INSERT INTO chat(uzenet, datum, user_id) VALUES ('$uzenet',CURRENT_TIMESTAMP,$id)";
-    echo $sql;
     $conn -> query($sql);
     header('Location: chatroom.php');
 

@@ -30,11 +30,6 @@
       $sql = "SELECT * FROM objektiv";
 
       $res = $conn -> query($sql);
-      $numRows = $res -> num_rows;
-
-
-
-      $res = $conn -> query($sql);
 
       $tabla = "";
       if ($res){
