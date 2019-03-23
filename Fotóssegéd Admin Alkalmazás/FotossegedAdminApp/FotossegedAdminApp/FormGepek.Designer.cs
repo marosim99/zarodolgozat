@@ -526,6 +526,7 @@
             this.buttonAddO.TabIndex = 34;
             this.buttonAddO.Text = "Listához adás";
             this.buttonAddO.UseVisualStyleBackColor = false;
+            this.buttonAddO.Click += new System.EventHandler(this.buttonAddO_Click);
             // 
             // labelStabil
             // 

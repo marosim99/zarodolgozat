@@ -662,5 +662,74 @@ namespace FotossegedAdminApp
             dataGridViewObjektiv.Rows[sor].Cells["suly"].Value = modositottObejktivek.getSuly();
             dataGridViewObjektiv.Rows[sor].Cells["ar"].Value = modositottObejktivek.getAr();
         }
+
+        private void buttonAddO_Click(object sender, EventArgs e)
+        {
+            int ujObjektivId = 0;
+            ObjektivOperations oo = new ObjektivOperations(ujObjektivId);
+            ujObjektivId = oo.getUjObjektivId();
+
+            bool stabil = false;
+            if (radioButtonVan.Checked)
+            {
+                stabil = true;
+            }
+            else
+            {
+                stabil = false;
+            }
+
+            string tipus = textBoxTipusO.Text;
+            string gyarto = textBoxGyartoO.Text;
+            string nev = textBoxNev.Text;
+            int gyujtotav = Convert.ToInt32(textBoxGyujto.Text);
+            double minblende = Convert.ToDouble(textBoxMinB.Text);
+            double maxblende = Convert.ToDouble(textBoxMaxB.Text);
+            int hossz = Convert.ToInt32(textBoxHossz.Text);
+            int suly = Convert.ToInt32(textBoxSuly.Text);
+            int ar = Convert.ToInt32(textBoxArO.Text);
+
+            Database update = new Database();
+            mdi = update.kapcsolodas();
+            mdi.open(); string query = "";
+            query += "INSERT INTO objektiv (id, tipus, gyarto, nev, gyujtotav, stabil, minblende, maxblende, hossz, suly, ar) VALUES ";
+            query += "(" + ujObjektivId + ", ";
+            query += "\"" + tipus + "\", ";
+            query += "\"" + gyarto + "\", ";
+            query += "\"" + nev + "\", ";
+            query += gyujtotav + ", ";
+            query += stabil + ", ";
+            query += minblende + ", ";
+            query += maxblende + ", ";
+            query += hossz + ", ";
+            query += suly + ", ";
+            query += ar + ")";
+            mdi.executeDMQuery(query);
+            mdi.close();
+
+            int sor = dataGridViewObjektiv.Rows.Count - 1;
+
+            dataGridViewObjektiv.Rows[sor].Cells["id"].Value = ujObjektivId;
+            dataGridViewObjektiv.Rows[sor].Cells["tipus"].Value = tipus;
+            dataGridViewObjektiv.Rows[sor].Cells["gyarto"].Value = gyarto;
+            dataGridViewObjektiv.Rows[sor].Cells["nev"].Value = nev;
+            dataGridViewObjektiv.Rows[sor].Cells["gyujtotav"].Value = gyujtotav;
+            dataGridViewObjektiv.Rows[sor].Cells["stabil"].Value = stabil;
+            dataGridViewObjektiv.Rows[sor].Cells["minblende"].Value = minblende;
+            dataGridViewObjektiv.Rows[sor].Cells["maxblende"].Value = maxblende;
+            dataGridViewObjektiv.Rows[sor].Cells["hossz"].Value = hossz;
+            dataGridViewObjektiv.Rows[sor].Cells["suly"].Value = suly;
+            dataGridViewObjektiv.Rows[sor].Cells["ar"].Value = ar;
+
+            textBoxTipusO.Clear();
+            textBoxGyartoO.Clear();
+            textBoxNev.Clear();
+            textBoxGyujto.Clear();
+            textBoxMinB.Clear();
+            textBoxMaxB.Clear();
+            textBoxHossz.Clear();
+            textBoxSuly.Clear();
+            textBoxArO.Clear();
+        }
     }
 }
