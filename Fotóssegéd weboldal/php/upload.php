@@ -22,9 +22,9 @@
 
     if (isset($_POST["upload"])){
 
-      /*if(!isset($_FILES['fenykep'])){
+      if(!isset($_FILES['fenykep'])){
             die("Hiba a feltöltés során");
-        }*/
+        }
 
       $cim = trim($_POST["cim"]);
       $leiras = trim($_POST["leiras"]);
@@ -46,15 +46,13 @@
           move_uploaded_file($imgTmpName, $UploadFolder.$imgName);
 
           $sql_kep = "INSERT INTO kepek (fajlnev, cim, leiras, hely, feltolt_datum, keszites_datum)
-          VALUES ('$imgName','$cim','$leiras','$hely',CURDATE(),$keszDatum);";
+          VALUES ('$imgName','$cim','$leiras','$hely',CURDATE(),'$keszDatum');";
           $conn -> query($sql_kep);
 
           $sql_foto = "INSERT INTO fotokeszites(gepid, userid) VALUES ($gepId,$userId)";
           $conn -> query($sql_foto);
 
-          echo $sql_kep;
-          echo "<br>";
-          echo $sql_foto;
+          header("Location: sajat_kepek.php");
       }
       else {
             echo "<div id='honapkepei'><p>Nem engedélyezett fájltípus, vagy túl nagy méretű!</p></div>";

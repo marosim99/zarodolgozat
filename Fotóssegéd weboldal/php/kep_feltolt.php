@@ -63,7 +63,7 @@
           </div>
          		<div class="form-group">
          			<label id="label">Hol készült a kép?</label>
-         			<input name="hely" class="form-control" id="exampleFormControlInput1" placeholder="pl. Balatonföldvár" required>
+         			<input name="hely" class="form-control" id="exampleFormControlInput1" placeholder="pl. Balatonföldvár">
          		</div>
          		<div class="form-group">
          			<label id="label">Fénykép készítésének dátuma</label>

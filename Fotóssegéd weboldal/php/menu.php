@@ -17,12 +17,16 @@
     </li>
     <?php
     if(isset($_SESSION['id'])){
-      echo'
-    <li class="nav-item">
-      <a class="nav-link" href="#"> Galéria </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="kep_feltolt.php"> Fénykép feltöltése </a>
+      echo'<li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Fényképek
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="galeria.php">Galéria</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="sajat_kepek.php">Saját képek</a>
+        <a class="dropdown-item" href="kep_feltolt.php">Fénykép feltöltése</a>
+      </div>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="chatroom.php"> Chat szoba </a>
