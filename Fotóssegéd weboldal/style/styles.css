@@ -80,6 +80,14 @@ input[name="profkep"]{
 	font-size: 20px;
 }
 
+#label_közepes_border{
+	color: white;
+	font-size: 20px;
+	border-bottom: 6px solid black;
+}
+
+
+
 .nav-link{
 	color: darkred;
 }
@@ -90,6 +98,8 @@ input[name="profkep"]{
 	margin-left: auto;
 	margin-right: auto;
 }
+
+
 .photo{
 	margin: 8px;
 

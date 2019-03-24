@@ -22,7 +22,7 @@
       require 'menu.php';
 
       $id = $_SESSION['id'];
-      $sql = "SELECT kepek.id, kepek.fajlnev, kepek.cim, fotokeszites.gepid, fotokeszites.userid FROM kepek INNER JOIN fotokeszites ON kepek.id = fotokeszites.kepid WHERE fotokeszites.userid=$id ORDER BY feltolt_datum DESC LIMIT 30;";
+      $sql = "SELECT kepek.id, kepek.fajlnev, kepek.cim, fotokeszites.gepid, fotokeszites.userid FROM kepek INNER JOIN fotokeszites ON kepek.id = fotokeszites.kepid WHERE fotokeszites.userid=$id ORDER BY feltolt_datum DESC;";
       $res = $conn -> query($sql);
     ?>
 

@@ -9,6 +9,7 @@
     <script src="../JS/jquery-3.3.1.min.js" charset="UTF-8"></script>
     <script src="../JS/regValidate.js" charset="UTF-8"></script>
 
+    <link href="../style/fontawesome-free-5.8.1-web/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
    <link rel="stylesheet" href="../style/styles.css">
 
@@ -53,6 +54,7 @@
         <div class="card-header" id="label">
           Képadatok
         </div>
+
       <div class="card-body bg-secondary" id="label">
                    <img src="../kepek/galeria/<?php echo $fajlnev; ?>" alt="" class="card-img-top"/>
            <div>
@@ -64,9 +66,10 @@
                <label for="d-flex justify-content-center" id="label_közepes">Rövid leírás a képről:</label>
                <p id="label_közepes"><?php echo $leiras; ?></p>
             </div>
+            <div id="label_közepes_border"></div>
             <div class="d-flex align-items-start">
               <br>
-              <p id="label_közepes">Készítő: </p> <a href="user_profil.php?id=<?php echo $id; ?>"><p id="label_közepes"> <?php echo $user; ?></p></a>
+              <p id="label_közepes">Készítő: </p><a href="user_profil.php?id=<?php echo $id; ?>"><p id="label_közepes"> <?php echo " ".$user; ?></p></a>
             </div>
             <div class="d-flex align-items-start">
               <br>

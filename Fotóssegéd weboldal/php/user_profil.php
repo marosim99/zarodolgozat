@@ -31,6 +31,12 @@
        $bemutatkozas = $row["bemutatkozas"];
        $regdatum = $row["regdatum"];
 
+       $sql_count = "SELECT COUNT(kepid) AS 'kepek_szama' FROM fotokeszites WHERE userid=$id;";
+       $res_count = $conn -> query($sql_count);
+       $row = $res_count -> fetch_assoc();
+       $count = $row["kepek_szama"];
+
+
        $profImg = "";
        if(file_exists("../kepek/profkep/".$id.".jpg"))
        {
@@ -70,8 +76,9 @@
      </div>
      <div class="d-flex align-items-start">
      <br>
-      <p id="label_nagy">Feltöltött képek száma: <?php  ?></p>
+      <p id="label_nagy">Feltöltött képek száma: <?php echo $count  ?>db</p>
     </div>
+    <a href="user_kepek.php?id=<?php echo $id; ?>" class="btn btn-dark"><?php echo $user ?> képeinek megtekintése</a>
 
    </div>
    </div>
