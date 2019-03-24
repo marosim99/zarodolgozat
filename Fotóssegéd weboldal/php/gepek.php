@@ -26,12 +26,30 @@
       $res = $conn -> query($sql);
       $numRows = $res -> num_rows;
 
+      $numPages = ceil($numRows / 10);
+      $oldalak = "";
 
+        for ($i = 1; $i<= $numPages; $i++){
+        $oldalak .= "<a href='gepek.php?page={$i}'>{$i}</a>";
+        }
 
-      $res = $conn -> query($sql);
+        if (isset($_GET['page'])){
+            $page = $_GET['page'];
+        } else {
+            $page = 1;
+        }
 
-      $tabla = "";
-      if ($res){
+        if ($page > 9) {  $page = 9; }
+        if ($page < 1) {  $page = 1; }
+
+        $productNum = 10;
+        $record = ($page-1) * 10;
+        $sql .= " LIMIT $record, $productNum";
+        $res = $conn -> query($sql);
+
+        $tabla = "";
+
+        if ($res){
         $tabla = "<table class='table table-hover table-dark text-center' id='dtBasicExample'>"
                 . "<thead>"
                 . "<tr>"
@@ -68,6 +86,9 @@
 	</div>
 
   <?php
+    echo'<nav id="text-center">Oldalak: ';
+      echo $oldalak;
+    echo'</nav>';
     echo $tabla;
   ?>
 

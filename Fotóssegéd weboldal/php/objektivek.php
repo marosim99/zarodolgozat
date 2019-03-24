@@ -13,12 +13,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
    <link rel="stylesheet" href="../style/styles.css">
 
-        <style>
-        span{
-           color: darkred;
-        }
-        </style>
-
     <title>Fotós segéd</title>
   </head>
   <body>
@@ -29,6 +23,28 @@
 
       $sql = "SELECT * FROM objektiv";
 
+      $res = $conn -> query($sql);
+      $numRows = $res -> num_rows;
+
+      $numPages = ceil($numRows / 8);
+      $oldalak = "";
+
+      for ($i = 1; $i<= $numPages; $i++){
+      $oldalak .= "<a href='objektivek.php?page={$i}'>{$i}</a>";
+      }
+
+      if (isset($_GET['page'])){
+          $page = $_GET['page'];
+      } else {
+          $page = 1;
+      }
+
+      if ($page > 9) {  $page = 9; }
+      if ($page < 1) {  $page = 1; }
+
+      $productNum = 8;
+      $record = ($page-1) * 8;
+      $sql .= " LIMIT $record, $productNum";
       $res = $conn -> query($sql);
 
       $tabla = "";
@@ -77,6 +93,9 @@
 	</div>
 
   <?php
+    echo'<nav id="text-center">Oldalak: ';
+      echo $oldalak;
+    echo'</nav>';
     echo $tabla;
   ?>
 
