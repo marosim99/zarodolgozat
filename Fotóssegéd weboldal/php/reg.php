@@ -27,6 +27,7 @@
     $pwd2 = trim($_POST["password2"]);
     $neme = trim($_POST["neme"]);
     $bemutatkozas = trim($_POST["bemutatkozas"]);
+    $pw_hash = password_hash($pwd, PASSWORD_DEFAULT);
 
     //$error_user = false;
     $check_user = "SELECT username FROM user WHERE username ='$user';";
@@ -58,7 +59,7 @@
     }
 
         if ((!$error_user) && (!$error_email) && ($pwd == $pwd2) && ($user != $pwd) && (strlen($pwd) > 5)){
-            $sql = "INSERT INTO user(username, password, neme, email, bemutatkozas, regdatum) VALUES ('$user','$pwd','$neme','$email','$bemutatkozas',CURDATE());";
+            $sql = "INSERT INTO user(username, password, neme, email, bemutatkozas, regdatum) VALUES ('$user','$pw_hash','$neme','$email','$bemutatkozas',CURDATE());";
             $conn -> query($sql);
             if ($conn -> error == 0){
                 $_SESSION['reg'] = "Sikeres regisztráció!";

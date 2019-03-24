@@ -46,7 +46,22 @@
 </a>
 </div><br>
 
+<form action ="gepek.php" class="form-inline my-2 my-lg-0" id="kereses" method="GET">
+				<input class="form-control mr-sm-2" type="search" name="keresesertek" placeholder="Keresés" aria-label="Search">
+				<button class="btn btn-dark" type="submit">Keresés</button>
+</form>
 
+if(isset($_GET['keresesertek']) AND !empty($_GET['keresesertek']))
+{
+$search = mysqli_real_escape_string($conn,$_GET['keresesertek']);
+$sql_keres = "SELECT * FROM gepek WHERE gyarto LIKE '%$search%' OR sorozat LIKE '%$search%' OR tipus LIKE '%$search%';";
+
+}else
+{
+		$sql_keres = "SELECT * FROM gepek";
+}
+
+$res = $conn -> query($sql_keres);
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

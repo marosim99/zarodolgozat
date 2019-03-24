@@ -21,8 +21,11 @@
       require_once '../config/connect.php';
       require "menu.php";
 
-      $sql = "SELECT * FROM gepek";
+      
 
+
+
+      $sql = "SELECT * FROM gepek";
       $res = $conn -> query($sql);
       $numRows = $res -> num_rows;
 
@@ -84,6 +87,8 @@
 	<div id="honapkepei">
 	<p>Legnépszerűbb fényképezőgépek</p>
 	</div>
+
+
 
   <?php
     echo'<nav id="text-center">Oldalak: ';
