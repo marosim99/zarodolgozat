@@ -61,8 +61,18 @@ while($row = $res -> fetch_assoc()){
 	<span class="sr-only">Next</span>
 </a>
 </div><br>
-
-
+<div id="felsorolas">
+  <?php
+  if(!isset($_SESSION['id'])){
+    echo'<p>Regisztráljon az oldalra, hogy elérje az alábbi funkciókat:</p>
+    <ul>
+    <li>Képfeltöltés</li>
+    <li>Mások képeinek megtekintése</li>
+    <li>Chat</li>
+    </ul>
+    </div>';
+}
+?>
 <div class="clearfix"></div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

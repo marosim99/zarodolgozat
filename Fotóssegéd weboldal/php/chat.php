@@ -22,8 +22,14 @@
 
     if (isset($_POST["kuldes"])){
 
-    $id = $_SESSION["id"];
-    $uzenet = trim($_POST["uzenet"]);
+      $id = $_SESSION["id"];
+      $uzenet = trim($_POST["uzenet"]);
+
+      if(empty($uzenet)){
+        header('Location: chatroom.php');
+        die();
+      }
+      else{
 
     $sql = "INSERT INTO chat(uzenet, datum, user_id) VALUES ('$uzenet',CURRENT_TIMESTAMP,$id)";
     $conn -> query($sql);
@@ -32,6 +38,7 @@
 
 
     }
+  }
     else {
       die();
     }

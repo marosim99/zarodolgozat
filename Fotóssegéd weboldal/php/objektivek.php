@@ -57,8 +57,8 @@
                 . "<th scope='col'>Név</th>"
                 . "<th scope='col'>Gyújtótáv</th>"
                 . "<th scope='col'>Stabilizátor</th>"
-                . "<th scope='col'>Minimum blende</th>"
-                . "<th scope='col'>Maximum blende</th>"
+                . "<th scope='col'>Legszűkebb blende</th>"
+                . "<th scope='col'>Legnagyobb blende</th>"
                 . "<th scope='col'>Hossz</th>"
                 . "<th scope='col'>Súly</th>"
                 . "</tr>"
@@ -72,9 +72,9 @@
                   . "<td>{$row[3]}</td>"
                   . "<td>{$row[4]}mm</td>";
                   if($row[5]==0){
-                    $tabla .= "<td>Nem</td>";
+                    $tabla .= "<td>Nincs</td>";
                   }else{
-                    $tabla .= "<td>Igen</td>";
+                    $tabla .= "<td>Van</td>";
                   }
                   $tabla .= "<td>f/{$row[6]}</td>"
                   . "<td>f/{$row[7]}</td>"
