@@ -12,101 +12,58 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
    <link rel="stylesheet" href="../style/styles.css">
 
-        <style>
-        span{
-           color: darkred;
-        }
-        </style>
-
     <title>Fotós segéd</title>
   </head>
   <body>
     <?php
       session_start();
        require "menu.php";
+       require '../config/connect.php';
+
+       $sql="SELECT user.username, kepek.fajlnev, kepek.cim FROM kepek INNER JOIN fotokeszites ON kepek.id = fotokeszites.kepid INNER JOIN user ON fotokeszites.userid = user.id  ORDER BY feltolt_datum DESC LIMIT 5;";
+       $res = $conn -> query($sql);
+
     ?>
 	<div id="honapkepei">
-	<p>A hónap legszebb képei</p>
+	<p>Utoljára feltölött képek</p>
 	</div>
 
-<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="../kepek/felho.jpg" alt="First slide">
-	  <div class="carousel-caption d-none d-md-block">
-    <h5>Viharfelhők</h5>
-    <p>Marosi Márk fényképe</p>
-  </div>
+  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-inner">
+
+<?php
+$counter = 1;
+while($row = $res -> fetch_assoc()){
+
+    echo'<div class="carousel-item ';
+    if($counter <= 1)
+    {
+      echo "active";
+    }
+      echo'">
+      <img class="d-block w-100" src="../kepek/galeria/'.$row['fajlnev'].'" alt="'.$row["cim"].'">
+    <div class="carousel-caption d-none d-md-block">
+    <h4>'.$row["cim"].'</h4>
+    <p>'.$row["username"].' fényképe</p>
     </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="../kepek/hold.jpg" alt="Second slide">
-	  <div class="carousel-caption d-none d-md-block">
-    <h5>Telihold</h5>
-    <p>Marosi Márk fényképe</p>
-  </div>
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="../kepek/fade.jpg" alt="Third slide">
-	  <div class="carousel-caption d-none d-md-block">
-    <h5>Színátmenetes naplemente</h5>
-    <p>Marosi Márk fényképe</p>
-  </div>
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+    </div>';
+    $counter++;
+  }
+?>
+
+</div>
+<a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+	<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	<span class="sr-only">Previous</span>
+</a>
+<a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+	<span class="carousel-control-next-icon" aria-hidden="true"></span>
+	<span class="sr-only">Next</span>
+</a>
 </div><br>
 
-	<div id="honapkepei">
-	<p>Legutoljára feltöltött képek</p>
-	</div>
-
-	<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="../kepek/3.jpg">
-      <img src="../kepek/3.jpg" alt="Cinque Terre" width="600" height="400">
-    </a>
-    <div class="desc">Feltöltő: Marosi Márk</div>
-  </div>
-</div>
-
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="../kepek/1.jpg">
-      <img src="../kepek/1.jpg" alt="auto" width="600" height="400">
-    </a>
-    <div class="desc">Feltöltő: Marosi Márk</div>
-  </div>
-</div>
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="../kepek/2.jpg">
-      <img src="../kepek/2.jpg" alt="Northern Lights" width="600" height="400">
-    </a>
-    <div class="desc">Feltöltő: Marosi Márk</div>
-  </div>
-</div>
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="../kepek/4.jpg">
-      <img src="../kepek/4.jpg" alt="Mountains" width="600" height="400">
-    </a>
-    <div class="desc">Feltöltő: Marosi Márk</div>
-  </div>
-</div>
 
 <div class="clearfix"></div>
-
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
