@@ -16,7 +16,7 @@ namespace FotossegedAdminApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormGepek());
+            Application.Run(new FormLogin());
         }
     }
 }

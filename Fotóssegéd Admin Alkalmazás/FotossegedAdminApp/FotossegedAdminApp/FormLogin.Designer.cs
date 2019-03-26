@@ -33,6 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.buttonLogin = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelUsername
@@ -83,11 +84,24 @@
             this.textBoxPassword.Size = new System.Drawing.Size(205, 30);
             this.textBoxPassword.TabIndex = 4;
             // 
+            // buttonLogin
+            // 
+            this.buttonLogin.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.buttonLogin.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonLogin.Location = new System.Drawing.Point(312, 338);
+            this.buttonLogin.Name = "buttonLogin";
+            this.buttonLogin.Size = new System.Drawing.Size(178, 34);
+            this.buttonLogin.TabIndex = 5;
+            this.buttonLogin.Text = "Bejelentkezés";
+            this.buttonLogin.UseVisualStyleBackColor = false;
+            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxUsername);
             this.Controls.Add(this.label2);
@@ -107,5 +121,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxUsername;
         private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.Button buttonLogin;
     }
 }
