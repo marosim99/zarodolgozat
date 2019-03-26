@@ -30,12 +30,12 @@
       <form class="flex-container" action="../php/belep.php" method="post">
     <div class="form-group">
 			<label id="label">Felhasználónév</label>
-			<input type="username" class="form-control" id="exampleFormControlInput1" name="username">
+			<input type="username" class="form-control" id="exampleFormControlInput1" name="username" required>
       <span id="userError"></span>
     </div>
 		<div class="form-group">
 			<label id="label">Jelszó</label>
-			<input type="password" class="form-control" id="exampleFormControlInput1" name="password">
+			<input type="password" class="form-control" id="exampleFormControlInput1" name="password" required>
       <span id="pwdError"></span>
 		</div>
 		<div class="form-group">
