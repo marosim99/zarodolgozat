@@ -35,6 +35,7 @@ namespace FotossegedAdminApp
             beallitVezerloketIndulaskor();
             beallitVezerloketIndulaskor_Objektivre();
             beallitVezerloketIndulaskor_User();
+            beallitLabelekIndulaskor_Stat();
         }
 
         #region Fényképezőgépek Tab
@@ -874,8 +875,74 @@ namespace FotossegedAdminApp
             dataGridViewUsers.Rows[sor].Cells["admin"].Value = modositottFelhasznalok.getAdmin();
         }
 
+
         #endregion
 
-        
+        #region statisztikák tab
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            beallitLabelekBetolteskor_Stat();
+        }
+
+        private void beallitLabelekIndulaskor_Stat()
+        {
+            labelUsers.Visible = false;
+            labelUserReg.Visible = false;
+            labelUserNumber.Visible = false;
+            labelUserUtolso.Visible = false;
+            labelKepek.Visible = false;
+            labelLastPic.Visible = false;
+            labelUtolsoKep.Visible = false;
+            labelKepekNum.Visible = false;
+            labelChat.Visible = false;
+            labelLastChat.Visible = false;
+
+        }
+
+        private void beallitLabelekBetolteskor_Stat()
+        {
+            labelUsers.Visible = true;
+            labelUserReg.Visible = true;
+            labelUserNumber.Visible = true;
+            labelUserUtolso.Visible = true;
+            labelKepek.Visible = true;
+            labelLastPic.Visible = true;
+            labelUtolsoKep.Visible = true;
+            labelKepekNum.Visible = true;
+            labelChat.Visible = true;
+            labelLastChat.Visible = true;
+
+            string userNumber = "";
+            string userReg = "";
+            string kepekNumber = "";
+            string lastPic = "";
+            string lastPicUser = "";
+            string lastChatDate = "";
+            string lastChatUser = "";
+
+            StatisztikakOperations so = new StatisztikakOperations();
+            labelUserNumber.Text = so.getUserNumber(userNumber);
+            labelUserReg.Text = so.getLastUserReg(userReg);
+            labelKepekNum.Text = so.getKepekNumber(kepekNumber);
+            labelLastPic.Text = so.getLastPicDate(lastPic) +"-kor, "+ so.getLastPicUser(lastPicUser) + " nevű felhasználó";
+            labelLastChat.Text = so.getLastChatDate(lastChatDate) + "-kor, " + so.getLastChatUser(lastChatUser) + " nevű felhasználó";
+
+
+        }
+
+
+
+        #endregion
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPageStats_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

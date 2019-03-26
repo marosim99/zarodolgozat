@@ -93,6 +93,17 @@
             this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
             this.tabPageStats = new System.Windows.Forms.TabPage();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.labelUsers = new System.Windows.Forms.Label();
+            this.labelKepek = new System.Windows.Forms.Label();
+            this.labelUserUtolso = new System.Windows.Forms.Label();
+            this.labelUtolsoKep = new System.Windows.Forms.Label();
+            this.labelChat = new System.Windows.Forms.Label();
+            this.labelUserNumber = new System.Windows.Forms.Label();
+            this.labelUserReg = new System.Windows.Forms.Label();
+            this.labelKepekNum = new System.Windows.Forms.Label();
+            this.labelLastPic = new System.Windows.Forms.Label();
+            this.labelLastChat = new System.Windows.Forms.Label();
             this.tabControlGepek.SuspendLayout();
             this.tabPageGepek.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGepek)).BeginInit();
@@ -100,6 +111,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewObjektiv)).BeginInit();
             this.tabPageFelhasznalok.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
+            this.tabPageStats.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlGepek
@@ -759,7 +771,7 @@
             this.buttonLoadU.Name = "buttonLoadU";
             this.buttonLoadU.Size = new System.Drawing.Size(178, 34);
             this.buttonLoadU.TabIndex = 58;
-            this.buttonLoadU.Text = "Objektívadatok betöltése";
+            this.buttonLoadU.Text = "Useradatok betöltése";
             this.buttonLoadU.UseVisualStyleBackColor = false;
             this.buttonLoadU.Click += new System.EventHandler(this.buttonLoadU_Click);
             // 
@@ -776,11 +788,23 @@
             // tabPageStats
             // 
             this.tabPageStats.BackColor = System.Drawing.Color.Gainsboro;
+            this.tabPageStats.Controls.Add(this.labelLastChat);
+            this.tabPageStats.Controls.Add(this.labelLastPic);
+            this.tabPageStats.Controls.Add(this.labelKepekNum);
+            this.tabPageStats.Controls.Add(this.labelUserReg);
+            this.tabPageStats.Controls.Add(this.labelUserNumber);
+            this.tabPageStats.Controls.Add(this.labelChat);
+            this.tabPageStats.Controls.Add(this.labelUtolsoKep);
+            this.tabPageStats.Controls.Add(this.labelUserUtolso);
+            this.tabPageStats.Controls.Add(this.labelKepek);
+            this.tabPageStats.Controls.Add(this.labelUsers);
+            this.tabPageStats.Controls.Add(this.button1);
             this.tabPageStats.Location = new System.Drawing.Point(4, 22);
             this.tabPageStats.Name = "tabPageStats";
             this.tabPageStats.Size = new System.Drawing.Size(987, 531);
             this.tabPageStats.TabIndex = 3;
             this.tabPageStats.Text = "Statisztikák";
+            this.tabPageStats.Click += new System.EventHandler(this.tabPageStats_Click);
             // 
             // buttonExit
             // 
@@ -793,6 +817,114 @@
             this.buttonExit.Text = "Kilépés";
             this.buttonExit.UseVisualStyleBackColor = false;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button1.Location = new System.Drawing.Point(25, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(178, 34);
+            this.button1.TabIndex = 59;
+            this.button1.Text = "Statisztikák betöltése";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // labelUsers
+            // 
+            this.labelUsers.AutoSize = true;
+            this.labelUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelUsers.Location = new System.Drawing.Point(32, 73);
+            this.labelUsers.Name = "labelUsers";
+            this.labelUsers.Size = new System.Drawing.Size(264, 20);
+            this.labelUsers.TabIndex = 60;
+            this.labelUsers.Text = "Regisztrált felhasználók száma:";
+            // 
+            // labelKepek
+            // 
+            this.labelKepek.AutoSize = true;
+            this.labelKepek.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelKepek.Location = new System.Drawing.Point(32, 160);
+            this.labelKepek.Name = "labelKepek";
+            this.labelKepek.Size = new System.Drawing.Size(197, 20);
+            this.labelKepek.TabIndex = 61;
+            this.labelKepek.Text = "Feltöltött képek száma:";
+            this.labelKepek.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // labelUserUtolso
+            // 
+            this.labelUserUtolso.AutoSize = true;
+            this.labelUserUtolso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelUserUtolso.Location = new System.Drawing.Point(32, 109);
+            this.labelUserUtolso.Name = "labelUserUtolso";
+            this.labelUserUtolso.Size = new System.Drawing.Size(229, 20);
+            this.labelUserUtolso.TabIndex = 62;
+            this.labelUserUtolso.Text = "Utolsó regisztráció dátuma:";
+            // 
+            // labelUtolsoKep
+            // 
+            this.labelUtolsoKep.AutoSize = true;
+            this.labelUtolsoKep.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelUtolsoKep.Location = new System.Drawing.Point(32, 196);
+            this.labelUtolsoKep.Name = "labelUtolsoKep";
+            this.labelUtolsoKep.Size = new System.Drawing.Size(165, 20);
+            this.labelUtolsoKep.TabIndex = 63;
+            this.labelUtolsoKep.Text = "Utolsó képfeltöltés:";
+            // 
+            // labelChat
+            // 
+            this.labelChat.AutoSize = true;
+            this.labelChat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelChat.Location = new System.Drawing.Point(32, 274);
+            this.labelChat.Name = "labelChat";
+            this.labelChat.Size = new System.Drawing.Size(177, 20);
+            this.labelChat.TabIndex = 64;
+            this.labelChat.Text = "Utolsó chat aktivitás:";
+            // 
+            // labelUserNumber
+            // 
+            this.labelUserNumber.AutoSize = true;
+            this.labelUserNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelUserNumber.Location = new System.Drawing.Point(311, 73);
+            this.labelUserNumber.Name = "labelUserNumber";
+            this.labelUserNumber.Size = new System.Drawing.Size(0, 20);
+            this.labelUserNumber.TabIndex = 65;
+            // 
+            // labelUserReg
+            // 
+            this.labelUserReg.AutoSize = true;
+            this.labelUserReg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelUserReg.Location = new System.Drawing.Point(276, 109);
+            this.labelUserReg.Name = "labelUserReg";
+            this.labelUserReg.Size = new System.Drawing.Size(0, 20);
+            this.labelUserReg.TabIndex = 66;
+            // 
+            // labelKepekNum
+            // 
+            this.labelKepekNum.AutoSize = true;
+            this.labelKepekNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelKepekNum.Location = new System.Drawing.Point(250, 160);
+            this.labelKepekNum.Name = "labelKepekNum";
+            this.labelKepekNum.Size = new System.Drawing.Size(0, 20);
+            this.labelKepekNum.TabIndex = 67;
+            // 
+            // labelLastPic
+            // 
+            this.labelLastPic.AutoSize = true;
+            this.labelLastPic.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelLastPic.Location = new System.Drawing.Point(215, 196);
+            this.labelLastPic.Name = "labelLastPic";
+            this.labelLastPic.Size = new System.Drawing.Size(0, 20);
+            this.labelLastPic.TabIndex = 68;
+            // 
+            // labelLastChat
+            // 
+            this.labelLastChat.AutoSize = true;
+            this.labelLastChat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelLastChat.Location = new System.Drawing.Point(215, 274);
+            this.labelLastChat.Name = "labelLastChat";
+            this.labelLastChat.Size = new System.Drawing.Size(0, 20);
+            this.labelLastChat.TabIndex = 69;
             // 
             // FormGepek
             // 
@@ -815,6 +947,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewObjektiv)).EndInit();
             this.tabPageFelhasznalok.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).EndInit();
+            this.tabPageStats.ResumeLayout(false);
+            this.tabPageStats.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -886,6 +1020,17 @@
         private System.Windows.Forms.Button buttonDeleteU;
         private System.Windows.Forms.Button buttonEditU;
         private System.Windows.Forms.Button buttonLoadU;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelUserUtolso;
+        private System.Windows.Forms.Label labelKepek;
+        private System.Windows.Forms.Label labelUsers;
+        private System.Windows.Forms.Label labelChat;
+        private System.Windows.Forms.Label labelUtolsoKep;
+        private System.Windows.Forms.Label labelLastPic;
+        private System.Windows.Forms.Label labelKepekNum;
+        private System.Windows.Forms.Label labelUserReg;
+        private System.Windows.Forms.Label labelUserNumber;
+        private System.Windows.Forms.Label labelLastChat;
     }
 }
 
