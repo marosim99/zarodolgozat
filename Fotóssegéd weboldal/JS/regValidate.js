@@ -1,15 +1,4 @@
 $(document).ready(function(){
-    /*$("button[name='reg']").click(function(event){
-
-        console.log("Rám kattintottál");
-        event.preventDefault();
-    });*/
-    $("input").focus(function(){
-        $(this).addClass("aktiv");
-    });
-    $("input").blur(function(){
-        $(this).removeClass("aktiv");
-    });
 
     $("input[name='email']").blur(function(){
   		$("#emailError").html("");
@@ -38,7 +27,7 @@ $(document).ready(function(){
         joJelszo = minta.test(jelszo);
 
         if(!joJelszo){
-          $("#pwdError").text("Legalább 6 karakter és szám, és speciális karakter!");
+          $("#pwdError").text("Legalább 6 karakter, egy szám, és egy speciális karakter!");
           document.getElementById('submitbtn').disabled='disabled';
           }else{
             document.getElementById('submitbtn').disabled=false;
@@ -52,9 +41,7 @@ $(document).ready(function(){
 
 		if(pwd !== pwd2){
 			$("#pwd2Error").text("A két jelszó nem egyezik!");
-      /*document.getElementById('submitbtn').disabled='disabled';
-    }else{
-			document.getElementById('submitbtn').disabled=false;*/
+
     }
 		});
 

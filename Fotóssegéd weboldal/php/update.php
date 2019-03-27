@@ -28,14 +28,13 @@ require_once("../config/connect.php");
       $pwd = trim($_POST["password"]);
       $pwd2 = trim($_POST["password2"]);
       $bemutatkozas = trim($_POST["bemutatkozas"]);
-
+      $pw_hash = password_hash($pwd, PASSWORD_DEFAULT);
 
 
       if (($pwd == $pwd2) && ($user != $pwd) && (strlen($pwd) > 5)){
-          $sql = "UPDATE user SET username='$user', password='$pwd', email='$email', bemutatkozas='$bemutatkozas' WHERE id='$id';";
+          $sql = "UPDATE user SET username='$user', password='$pw_hash', email='$email', bemutatkozas='$bemutatkozas' WHERE id='$id';";
           $conn -> query($sql);
 
-          //echo "$sql";
 
           if ($conn -> error == 0){
               $_SESSION['reg'] = "Sikeres módosítás!";

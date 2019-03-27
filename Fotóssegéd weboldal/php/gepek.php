@@ -21,7 +21,7 @@
       require_once '../config/connect.php';
       require "menu.php";
 
-      
+
 
 
 
@@ -72,7 +72,7 @@
                   . "<td>{$row[1]}</td>"
                   . "<td>{$row[2]}</td>"
                   . "<td>{$row[3]}</td>"
-                  . "<td>{$row[4]}</td>"
+                  . "<td>{$row[4]} MPx</td>"
                   . "<td>{$row[5]}</td>"
                   . "<td>{$row[6]}</td>"
                   . "<td>{$row[7]}Ft</td>"

@@ -93,7 +93,6 @@
 
                 if(gyarto != "alap"){
                   $.get("select_sorozat.php?gyarto="+gyarto,function(kiir){
-                      //console.log(gyarto);
                       $("#select").html(kiir);
                   });
                 }

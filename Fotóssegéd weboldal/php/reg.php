@@ -29,15 +29,11 @@
     $bemutatkozas = trim($_POST["bemutatkozas"]);
     $pw_hash = password_hash($pwd, PASSWORD_DEFAULT);
 
-    //$error_user = false;
     $check_user = "SELECT username FROM user WHERE username ='$user';";
     $result_user = mysqli_query($conn,$check_user);
-    //$count_user = mysqli_num_rows($result_user);
 
-    //$error_email = false;
     $check_email = "SELECT email FROM user WHERE email ='$email';";
     $result_email = mysqli_query($conn,$check_email);
-    //$count_email = mysqli_num_rows($result_email);
 
     if(mysqli_num_rows($result_user) > 0)
     {

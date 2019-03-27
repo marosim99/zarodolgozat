@@ -39,15 +39,15 @@ $profkepFolder = "..\kepek\profkep\\";
 
 if (in_array($imgType, $imgFormat) && $imgSize < 16000000){
 
-    if (file_exists($profkepFolder.$id.".jpg")) {
-        unlink($profkepFolder.$id.".jpg");
-        move_uploaded_file($imgTmpName, $profkepFolder.$imgName);
-        rename($profkepFolder.$imgName, $profkepFolder.$id.".".$ext);
+    if (file_exists($profkepFolder.$id.".jpg")) { //vizsgálja, hogy van-e már adott id névvel .jpg fájl
+        unlink($profkepFolder.$id.".jpg"); //kitörli ha van
+        move_uploaded_file($imgTmpName, $profkepFolder.$imgName); //áthelyezi az újat
+        rename($profkepFolder.$imgName, $profkepFolder.$id.".".$ext); //átnevezi a user id alapján
         header("Location: profil_modositasa.php");
-    } else {
-      unlink($profkepFolder.$id.".png");
-      move_uploaded_file($imgTmpName, $profkepFolder.$imgName);
-      rename($profkepFolder.$imgName, $profkepFolder.$id.".".$ext);
+    } else { //vizsgálja, hogy van-e már adott id névvel .png fájl
+      unlink($profkepFolder.$id.".png");  //kitörli ha van
+      move_uploaded_file($imgTmpName, $profkepFolder.$imgName); //áthelyezi az újat
+      rename($profkepFolder.$imgName, $profkepFolder.$id.".".$ext); //átnevezi a user id alapján
       header("Location: profil_modositasa.php");
     }
 

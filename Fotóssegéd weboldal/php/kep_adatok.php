@@ -69,7 +69,7 @@
             <div id="label_közepes_border"></div>
             <div class="d-flex align-items-start">
               <br>
-              <p id="label_közepes">Készítő: </p><a href="user_profil.php?id=<?php echo $id; ?>"><p id="label_közepes"> <?php echo " ".$user; ?></p></a>
+              <p id="label_közepes">Készítő: </p><p id="label_közepes" class="message-name"><a href="user_profil.php?id=<?php echo $id; ?>"> <?php echo " ".$user; ?></a></p>
             </div>
             <div class="d-flex align-items-start">
               <br>

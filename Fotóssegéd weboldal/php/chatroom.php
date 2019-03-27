@@ -81,7 +81,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="input-group">
-          <input type="text" class="form-control" name="uzenet">
+          <input type="text" class="form-control" name="uzenet" placeholder="Írja ide elküldeni kívánt üzenetét" maxlength="350">
           <span class="input-group-btn">
             <button type="submit" class="btn btn-default" name="kuldes">Küldés</button><br>
           </span>

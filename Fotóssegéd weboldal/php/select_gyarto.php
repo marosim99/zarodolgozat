@@ -7,6 +7,6 @@ $gyarto = '<select class="form-control" id="gyarto">
   <option value="alap">Válassz</option>';
 
   while($row = $res_gy -> fetch_assoc()){
-      $gyarto.= "<label id='label'>Fényképezőgép típusa</label><option value='{$row['gyarto']}'> {$row['gyarto']} </option>";
+      $gyarto.= "<option value='{$row['gyarto']}'> {$row['gyarto']} </option>";
   }
   $gyarto .= "</select>";
