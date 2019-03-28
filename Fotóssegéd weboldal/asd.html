@@ -51,24 +51,24 @@
 				<button class="btn btn-dark" type="submit">Keresés</button>
 </form>
 
-if(isset($_GET['keresesertek']) AND !empty($_GET['keresesertek']))
-{
-$search = mysqli_real_escape_string($conn,$_GET['keresesertek']);
-$sql_keres = "SELECT * FROM gepek WHERE gyarto LIKE '%$search%' OR sorozat LIKE '%$search%' OR tipus LIKE '%$search%';";
+<form action ="gepek.php" class="form-inline my-2 my-lg-0" id="kereses" method="GET">
+				<input class="form-control mr-sm-2" type="search" name="keresesertek" placeholder="Étterem kereső" aria-label="Search">
+				<button class="btn btn-dark my-2 my-sm-0" type="submit">Keresés</button>
+</form>
 
-}else
-{
-		$sql_keres = "SELECT * FROM gepek";
-}
+<style>
+	@media screen and (max-width: 800px) {
+	  #col-75, input[type=button] {
+	    width: 80%;
+	    margin-top: 0;
+	  }
+	}
+	</style>
 
-$res = $conn -> query($sql_keres);
 
-$("input").focus(function(){
-		$(this).addClass("aktiv");
-});
-$("input").blur(function(){
-		$(this).removeClass("aktiv");
-});
+
+
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

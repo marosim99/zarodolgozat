@@ -9,11 +9,11 @@ using System.Windows.Forms;
 
 namespace FotossegedAdminApp.Repository
 {
-    class StatisztikakOperations
+    public class StatisztikakOperations
     {
         private MySQLDatabaseInterface mdi;
 
-        internal string getUserNumber(string userNumber)
+        public string getUserNumber(string userNumber)
         {
             Database md = new Database();
             mdi = md.kapcsolodas();

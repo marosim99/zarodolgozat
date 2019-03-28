@@ -1,11 +1,9 @@
 <!doctype html>
 <html lang="hu">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
     <script src="../JS/jquery-3.3.1.min.js" charset="UTF-8"></script>
     <script src="../JS/regValidate.js" charset="UTF-8"></script>
     <script src="../JS/datatable.js" charset="UTF-8"></script>

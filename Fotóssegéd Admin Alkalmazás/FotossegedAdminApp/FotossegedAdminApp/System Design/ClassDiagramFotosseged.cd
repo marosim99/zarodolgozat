@@ -31,32 +31,32 @@
     </TypeIdentifier>
   </Class>
   <Class Name="FotossegedAdminApp.Repository.GepekOperations">
-    <Position X="8.75" Y="4.75" Width="1.5" />
+    <Position X="7.5" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAQAAAAAAACAIAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
       <FileName>Repository\GepekOperations.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FotossegedAdminApp.FormGepek">
-    <Position X="2" Y="5.25" Width="1.5" />
+    <Position X="1.75" Y="5" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>OIUABGNgIiRXIlqwIgj8XoKDUgAXsUIRoUMBBwNpcE8=</HashCode>
+      <HashCode>OIUABHdhIiTXInqwJgj8XoKjUgQfsWIRoUMBBwNpcG8=</HashCode>
       <FileName>FormGepek.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FotossegedAdminApp.Repository.ObjektivOperations">
-    <Position X="6.5" Y="4.75" Width="1.5" />
+    <Position X="5.75" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAIEAACAAAAAAAAAAAAAAAAAAAAAAgAAAAE=</HashCode>
       <FileName>Repository\ObjektivOperations.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FotossegedAdminApp.Repository.UserOperations">
-    <Position X="4.25" Y="5" Width="1.5" />
+    <Position X="3.75" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Repository\UserOperations.cs</FileName>
@@ -64,16 +64,18 @@
   </Class>
   <Class Name="System.Windows.Forms.Form" Collapsed="true">
     <Position X="6.75" Y="0.75" Width="1.5" />
-    <NestedTypes>
-      <Class Name="System.Windows.Forms.Form.ControlCollection" Collapsed="true">
-        <TypeIdentifier />
-      </Class>
-    </NestedTypes>
     <TypeIdentifier />
   </Class>
   <Class Name="System.Object">
     <Position X="8.75" Y="1.25" Width="1.5" />
     <TypeIdentifier />
+  </Class>
+  <Class Name="FotossegedAdminApp.Repository.StatisztikakOperations">
+    <Position X="9.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAIACAAAAAAAgAAAAAAAAEIACAAAAAAgAAA=</HashCode>
+      <FileName>Repository\StatisztikakOperations.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

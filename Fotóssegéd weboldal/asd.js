@@ -19,4 +19,13 @@
               });
 
             });
+
+            $res = $conn -> query($sql_keres);
+
+            $("input").focus(function(){
+            		$(this).addClass("aktiv");
+            });
+            $("input").blur(function(){
+            		$(this).removeClass("aktiv");
+            });
 </script>
