@@ -35,3 +35,28 @@
 				{
 						$sql_keres = "SELECT * FROM gepek";
 				}
+
+
+
+	echo '<div class="row mb-3">';
+	while($row = $res -> fetch_assoc()){
+		echo '<div class="col-md-4">    
+		<div class="card photo">
+		<a class="lightbox" href="kep_adatok.php?kepid='.$row["id"].'
+				&gepid='.$row["gepid"].'&userid='.$row["userid"].'">  
+		
+		<img src="../kepek/galeria/'.$row["fajlnev"].'" 
+				alt="'.$row["cim"].'" class="card-img-top">
+		</a>
+		</div>
+		</div>';
+	}
+	echo '</div>';
+			
+			
+			
+			
+			
+			
+			
+			
