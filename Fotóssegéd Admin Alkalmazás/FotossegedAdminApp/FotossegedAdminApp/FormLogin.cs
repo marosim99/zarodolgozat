@@ -50,8 +50,9 @@ namespace FotossegedAdminApp
                 {
                     if (Crypter.CheckPassword(password, row["password"].ToString()))
                     {
+                        //sikeres belépés
                         this.Hide();
-                        FormGepek fg = new FormGepek();
+                        FormGepek fg = new FormGepek();//átvezetjük a felhasználót a FormGepek-re
                         fg.ShowDialog();
                         this.Close();
 

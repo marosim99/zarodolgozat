@@ -10,10 +10,7 @@ namespace FotossegedAdminApp
 {
 
     public partial class FormGepek : Form
-    {
-        //GepekOperations GDO;
-        //ObjektivOperations OO;
-        
+    {       
         
         bool modositva_gep = false;
         bool modositva_objektiv = false;
