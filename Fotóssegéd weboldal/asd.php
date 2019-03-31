@@ -40,23 +40,35 @@
 
 	echo '<div class="row mb-3">';
 	while($row = $res -> fetch_assoc()){
-		echo '<div class="col-md-4">    
+		echo '<div class="col-md-4">
 		<div class="card photo">
 		<a class="lightbox" href="kep_adatok.php?kepid='.$row["id"].'
-				&gepid='.$row["gepid"].'&userid='.$row["userid"].'">  
-		
-		<img src="../kepek/galeria/'.$row["fajlnev"].'" 
+				&gepid='.$row["gepid"].'&userid='.$row["userid"].'">
+
+		<img src="../kepek/galeria/'.$row["fajlnev"].'"
 				alt="'.$row["cim"].'" class="card-img-top">
 		</a>
 		</div>
 		</div>';
 	}
 	echo '</div>';
-			
-			
-			
-			
-			
-			
-			
-			
+
+
+	$sql="SELECT user.username, kepek.fajlnev, kepek.cim FROM kepek INNER JOIN fotokeszites ON kepek.id = fotokeszites.kepid INNER JOIN user ON fotokeszites.userid = user.id  ORDER BY feltolt_datum DESC LIMIT 5;";
+	$res = $conn -> query($sql);
+
+	$counter = 1;
+	while($row = $res -> fetch_assoc()){
+	    echo'<div class="carousel-item ';
+	    if($counter <= 1){
+	      echo "active"; //hozzáadjuk a class-hez az active értéket
+	    }
+	      echo '">
+	      <img class="d-block w-100" src="../kepek/galeria/'.$row['fajlnev'].'" alt="'.$row["cim"].'">
+	    <div class="carousel-caption d-none d-md-block">
+	    <h4>'.$row["cim"].'</h4>
+	    <p>'.$row["username"].' fényképe</p>
+	    </div>
+	    </div>';
+	    $counter++;
+	  }
