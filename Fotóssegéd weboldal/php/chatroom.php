@@ -38,7 +38,7 @@
           $profImg = '../kepek/profkep/'.$id.'.png';
         }
         else {
-          $profImg = '../kepek/profkep/placeholder.jpg';
+          $profImg = '../kepek/profkep/placeholder.png';
         }
 
         $sql_user = "SELECT username FROM user INNER JOIN chat ON user.id=chat.user_id WHERE id=$id LIMIT 1;";

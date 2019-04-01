@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <script src="../JS/jquery-3.3.1.min.js" charset="UTF-8"></script>
     <script src="../JS/regValidate.js" charset="UTF-8"></script>
 
@@ -44,7 +44,7 @@
          $profImg = '../kepek/profkep/'.$id.'.png';
        }
        else {
-         $profImg = '../kepek/profkep/placeholder.jpg';
+         $profImg = '../kepek/profkep/placeholder.png';
        }
     ?>
 <br>

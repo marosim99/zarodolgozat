@@ -35,7 +35,7 @@ namespace FotossegedAdminApp.Repository
             return userReg;
         }
 
-        internal string getKepekNumber(string kepekNumber)
+        public string getKepekNumber(string kepekNumber)
         {
             Database md = new Database();
             mdi = md.kapcsolodas();

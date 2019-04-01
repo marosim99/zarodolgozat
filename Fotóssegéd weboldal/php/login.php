@@ -29,7 +29,6 @@
     <div class="form-group">
 			<label id="label">Felhasználónév</label>
 			<input type="username" class="form-control" id="exampleFormControlInput1" name="username" required>
-      <span id="userError"></span>
     </div>
 		<div class="form-group">
 			<label id="label">Jelszó</label>

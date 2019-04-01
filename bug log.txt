@@ -1,0 +1,8 @@
+-Tábla összekapcsolások?
+-Profil módosítása oldalon, profilkép feltöltésénél ha a fájlnév túl hosszú, akkor blokkolja a feltöltés gombot
+-Browse átállítása magyarra
+-felesleges css sorok, felesleges kommentek törlése
+-ideiglenes fájlok törlése
+
+Reszponzivitás
+Bootstrap & JS offline elérési útvonalak

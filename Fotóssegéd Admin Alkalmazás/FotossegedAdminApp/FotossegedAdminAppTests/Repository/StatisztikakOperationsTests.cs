@@ -15,10 +15,19 @@ namespace FotossegedAdminApp.Repository.Tests
         public void getUserNumberTest()
         {
             StatisztikakOperations so = new StatisztikakOperations();
-            string actual = so.getUserNumber("0");
-            string expected = "5";
+            string actual = so.getUserNumber("0"); //Az adatbázisból lekért felhasználók száma
+            string expected = "5"; //A valós eredmény, amit elvárunk
             Assert.AreEqual(expected, actual, "Felhasználók számára nem jó eredményt ad!");
         }
-        
+
+        [TestMethod()]
+        public void getKepekNumber()
+        {
+            StatisztikakOperations so = new StatisztikakOperations();
+            string actual = so.getKepekNumber("0"); //Az adatbázisból lekért fényképek száma
+            string expected = "9"; //A valós eredmény, amit elvárunk
+            Assert.AreEqual(expected, actual, "Fényképek számára nem jó eredményt ad!");
+        }
+
     }
 }

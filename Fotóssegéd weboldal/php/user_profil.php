@@ -44,7 +44,7 @@
          $profImg = '../kepek/profkep/'.$id.'.png';
        }
        else {
-         $profImg = '../kepek/profkep/placeholder.jpg';
+         $profImg = '../kepek/profkep/placeholder.png';
        }
     ?>
 <br>
